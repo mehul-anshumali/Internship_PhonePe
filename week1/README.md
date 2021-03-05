@@ -47,7 +47,7 @@ sudo fdisk -l
 #### Mark the Physical Devices as Physical Volumes
 Now that we know the disks we want to use, we can mark them as physical volumes within LVM using the ```pvcreate``` command:
 ```
-sudo pvcreate /dev/ /dev/
+sudo pvcreate /dev/sdb /dev/sdc
 ```
 <!--- Add the output of pvcreate --->
 This will write an LVM header to the devices to indicate that they are ready to be added to a volume group.
@@ -73,11 +73,57 @@ Now that we have created physical volumes from our devices, we can create a volu
 
 To create the volume group and add our physical volumes to it, type the following command:
 ```
-sudo vgcreate newVG /dev/ /dev/
+sudo vgcreate newVG /dev/sdb /dev/sdc
+```
+You can verify that VG has created by typing:
+```
+sudo vgs
+```
+#### Creating Logical Volumes from the Volume Group
+Now that we have a volume group available, we can use it as a pool that we can allocate logical volumes from. We wil call it ```newLV```.
+
+To create the volume group and add our physical volumes to it, type the following command:
+```
+sudo lvcreate -n newLV -L 19G newVG
+```
+You can verify that LV has created by typing:
+```
+sudo lvs
 ```
 
+#### Format and Mount the Logical Volume
+We are mouting this ```newLV``` logical volume by XFS file system. 
+So, first we need to install xfs file system utilities.
+```
+sudo apt-get install xfsprogs
+```
+Create a directory where this xfs file system will be mounted. We are mounting it in ```/data```.
+```
+mkdir /data
+```
+Now, to format our logical volume with the Xfs filesystem, we can type:
+```
+sudo mkfs.xfs /dev/newVG/newLV
+```
+After formatting, we mount it to ```/data``` directory:
+```
+sudo mount xfs /dev/newVG/newLV /data
+```
+To make the mounts persistent, add them to ```/etc/fstab```:
+```
+sudo nano /etc/fstab
+```
+```
+/dev/newVG/newLV /data xfs defaults 0 0
+```
+Save ```ctrl+s``` and exit ```ctrl+x```.
+
+Then, type ```mount -a```.
+
+The operating system should now mount the LVM logical volumes automatically at boot.
 
 ## Add another 10GB disk to the VM. Add it to the existing LVM.
+
 
 ## Run a HTTP server on this VM. Make sure that the server starts automatically when the system starts.
 
