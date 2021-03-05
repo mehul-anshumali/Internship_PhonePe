@@ -123,8 +123,63 @@ Then, type ```mount -a```.
 The operating system should now mount the LVM logical volumes automatically at boot.
 
 ## Add another 10GB disk to the VM. Add it to the existing LVM.
-
+we will add 10GB disk from virtual box and after this we will first create the physical volume of newly added disk i.e ```/dev/sdd```.
+Creating pv of new disk i.e /dev/sdd
+```
+sudo pvcreate /dev/sdd
+```
+Then we will the extend the already created vg (```newVG```).
+```
+sudo vgextend newVG /dev/sdd 
+```
+After this, we will expand our logical volume. Here I am expanding my lv ```newLV``` maximum (10GB).
+```
+sudo lvextend -l +9G /dev/newVg/newLV
+```
+After Extending, we need to re-size the file-system using. As I have used the Xfs file system earlier to create ```newLV``` LV. So we will resize it by using the following command:
+```
+sudo xfs_growfs /dev/newVG/newLV
+```
+ 
+Now let’s see the size of re-sized logical volume using.
+```sudo lvdisplay```
 
 ## Run a HTTP server on this VM. Make sure that the server starts automatically when the system starts.
-
+#### Install the Apache2 web server software as follows.
+```
+sudo apt install apache2
+```
+#### Managing the Apache in Ubuntu 20.04
+```
+sudo systemctl stop apache2      #stop apache2
+sudo systemctl start apache2     #start apache2
+sudo systemctl restart apache2   #restart apache2
+sudo systemctl reload apache2    #reload apache2
+sudo systemctl disable apache2   #disable apache2
+sudo systemctl enable apache2    #enable apache2
+```
+#### Configuring Apache in Ubuntu 20.04
+```
+sudo vim /etc/apache2/apache2.conf 
+```
+Add below line after ```#ServerRoot "/etc/apache2"```
+```
+ServerName "your VM ip"
+```
+```
+ServerName 192.168.176.254
+```
+After adding the server name in the apache configuration, check the configuration syntax for correctness, and restart the service.
+```
+sudo apache2ctl configtest
+sudo systemctl restart apache2
+```
+ Now when you check the apache2 service status, the warning should not appear.
+ ```
+ sudo systemctl status apache2
+ ```
+ Double checking server is runnning or not :
+ ```
+ curl -I 192.168.176.254
+ ```
 ## Using packer automate the entire setup.
