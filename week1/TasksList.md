@@ -183,3 +183,15 @@ sudo systemctl restart apache2
  curl -I 192.168.176.254
  ```
 ## Using packer automate the entire setup.
+## The users in the group interns should be able to login via private key, and not a password.
+Generated the key using ```ssh``` command ```ssh-keygen```.
+SSh keygen generates two types of keys public key and private key. And we have to copy public key. So type the followimg command.
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub hostname@your-server-ip
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub mehul-intern@192.168.176.254
+```
+That's it now you can login by using ```ssh mehul-intern@192.168.176.254```
+## Mount /var/log on a seperate mount.
+
+## The http server should only listen on the VMs IP and not localhost.
