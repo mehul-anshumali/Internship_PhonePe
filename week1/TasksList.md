@@ -183,3 +183,6 @@ sudo systemctl restart apache2
  curl -I 192.168.176.254
  ```
 ## Using packer automate the entire setup.
+## The users in the group interns should be able to login via private key, and not a password.
+## Mount /var/log on a seperate mount.
+## The http server should only listen on the VMs IP and not localhost.
