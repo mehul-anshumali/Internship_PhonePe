@@ -1,7 +1,7 @@
 # :dart: Week 1 Tasks Lists 
 
 ## Install VBox
-Follow this detailed post to downlaod and install Virtual Box on your system - :point_right: https://data-flair.training/blogs/install-virtualbox/
+Follow this detailed post to download and install Virtual Box on your system - :point_right: https://data-flair.training/blogs/install-virtualbox/
 
 ## Download and Install Ubuntu Server Focal Fossia 20.04
 Follow this youtube tutorial to install Ubuntu Server 20.04 on your Virtual Box - :point_right: https://www.youtube.com/watch?v=XPqLGYUpGQA
@@ -12,17 +12,21 @@ To create a user or add a new user, enter the following command in your shell
 sudo adduser <username>
 sudo adduser mehulanshumali
 ```
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/users_list.png" width="600" height="500">
 
 To create a group, enter the following command in your shell
 ```
 sudo addgroup <groupname>
 sudo addgroup intern
 ```
+
 To add user to a group, enter the following command in your shell
 ```
 sudo adduser <username> <groupname>
 sudo adduser mehulanshumali intern
 ```
+
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/group_list.png" width="600" height="500">
 
 ## Add 2 disks each of 10GB each to this VM. Create a LVM using these two disks and create XFS filesystem on it. Mount this on /data directory and make sure that mount persists across reboots.
 ### About LVM 
@@ -109,6 +113,8 @@ After formatting, we mount it to ```/data``` directory:
 ```
 sudo mount xfs /dev/newVG/newLV /data
 ```
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/lvm_created.png" width="600" height="500">
+
 To make the mounts persistent, add them to ```/etc/fstab```:
 ```
 sudo nano /etc/fstab
@@ -141,8 +147,8 @@ After Extending, we need to re-size the file-system using. As I have used the Xf
 sudo xfs_growfs /dev/newVG/newLV
 ```
  
-Now let’s see the size of re-sized logical volume using.
-```sudo lvdisplay```
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/extended_lvm.png">
+
 
 ## Run a HTTP server on this VM. Make sure that the server starts automatically when the system starts.
 #### Install the Apache2 web server software as follows.
@@ -181,7 +187,12 @@ sudo systemctl restart apache2
  Double checking server is runnning or not :
  ```
  curl -I 192.168.176.254
+ curl -head 192.168.176.254
  ```
+ 
+ <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/server_verification.png">
+ 
+ 
 ## Using packer automate the entire setup.
 ## The users in the group interns should be able to login via private key, and not a password.
 Generated the key using ```ssh``` command ```ssh-keygen```.
@@ -192,6 +203,12 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub hostname@your-server-ip
 ssh-copy-id -i ~/.ssh/id_rsa.pub mehul-intern@192.168.176.254
 ```
 That's it now you can login by using ```ssh mehul-intern@192.168.176.254```
+
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/ssh.png">
+
 ## Mount /var/log on a seperate mount.
+
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/var_task.png">
+
 
 ## The http server should only listen on the VMs IP and not localhost.
