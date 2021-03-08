@@ -1,233 +1,45 @@
-# :dart: Week 1 Tasks Lists 
+# :dart: Week 2 Tasks Lists 
 
-## :pushpin: Install VBox
-Follow this detailed post to download and install Virtual Box on your system - :point_right: https://data-flair.training/blogs/install-virtualbox/
+Logfile: https://raw.githubusercontent.com/aratik711/nginx-log-generator/main/access.log
 
-## :pushpin: Download and Install Ubuntu Server Focal Fossia 20.04
-Follow this youtube tutorial to install Ubuntu Server 20.04 on your Virtual Box - :point_right: https://www.youtube.com/watch?v=XPqLGYUpGQA
-
-## :pushpin: Create users who are a part of internship. Create a group named 'intern' and add users to that group.
-To create a user or add a new user, enter the following command in your shell
+The format of the logs is as follows:
 ```
-sudo adduser <username>
-sudo adduser mehulanshumali
-```
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/users_list.png" width="600" height="500">
+ip, time, httpMethod, path, httpVersion, statusCode, responseTime, upstream_ip:port, bodyBytesSent, referrer, userAgent, ssl_protocol, content_type, host
 
-To create a group, enter the following command in your shell
-```
-sudo addgroup <groupname>
-sudo addgroup intern
 ```
 
-To add user to a group, enter the following command in your shell
-```
-sudo adduser <username> <groupname>
-sudo adduser mehulanshumali intern
-```
+## :pushpin: Write a bash script to part the logs and provide the stats mentioned below.
 
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/group_list.png" width="600" height="500">
+## :pushpin: Write a perl script to generate the above output in HTML where each Day is a collapsible button ( https://www.w3schools.com/bootstrap/bootstrap_collapse.asp ) and when clicked it shows the stats.
 
-## :pushpin: Add 2 disks each of 10GB each to this VM. Create a LVM using these two disks and create XFS filesystem on it. Mount this on /data directory and make sure that mount persists across reboots.
-### About LVM 
-LVM (Logical Volume Manager) is a device mapper framework that provides logical volume management for the kernel. It is a tool for logical volume management which includes allocating disk, stripping, mirroring, and resizing logical volumes. With this, a hard disk or a set of hard disks is allocated to on or more physical volumes.
+## :pushpin: Create a web UI using Python Flask where we upload an nginx log file and it creates a view like the above perl script .
 
-LVM functions by layering abstractions on top of physical storage devices. The basic layers that LVM uses, starting with the most primitive, are.
-  i) Physical Volume (pv),
-  ii) Volume Group (vg), and
-  iii) Logical Volumne (lv)
+### The stats on the web page/script should show the following:
 
-### Creating and Managing LVM
-Our first step is scan the system for block devices that LVM can see and manage. You can do this by the folllowing command:
-```
-sudo lvmdiskscan
-```
-<!--- Add the output of lvmdiskscan --->
-After seeing the physical volume our next step is to see how many disks are available to manage and to add it to the physical volume.You can do this by the folllowing command:
-```
-sudo fdisk -l
-```
-<!--- Add the output of fdisk --->
-#### Mark the Physical Devices as Physical Volumes
-Now that we know the disks we want to use, we can mark them as physical volumes within LVM using the ```pvcreate``` command:
-```
-sudo pvcreate /dev/sdb /dev/sdc
-```
-<!--- Add the output of pvcreate --->
-This will write an LVM header to the devices to indicate that they are ready to be added to a volume group.
-
-You can verify that LVM has registered the physical volumes by typing:
-```
-sudo pvs
-```
-<!--- Add the output --->
-OR 
-```
-sudo pvscan
-```
-<!--- Add the output --->
-OR 
-```
-sudo pvdisplay
-```
-<!--- Add the output --->
-
-#### Add the Physical Volumes to a Volume Group
-Now that we have created physical volumes from our devices, we can create a volume group. We will have to select a name for the volume group, which we’ll keep generic. We wil call it ```newVG```.
-
-To create the volume group and add our physical volumes to it, type the following command:
-```
-sudo vgcreate newVG /dev/sdb /dev/sdc
-```
-You can verify that VG has created by typing:
-```
-sudo vgs
-```
-#### Creating Logical Volumes from the Volume Group
-Now that we have a volume group available, we can use it as a pool that we can allocate logical volumes from. We wil call it ```newLV```.
-
-To create the volume group and add our physical volumes to it, type the following command:
-```
-sudo lvcreate -n newLV -L 19G newVG
-```
-You can verify that LV has created by typing:
-```
-sudo lvs
-```
-
-#### Format and Mount the Logical Volume
-We are mouting this ```newLV``` logical volume by XFS file system. 
-So, first we need to install xfs file system utilities.
-```
-sudo apt-get install xfsprogs
-```
-Create a directory where this xfs file system will be mounted. We are mounting it in ```/data```.
-```
-mkdir /data
-```
-Now, to format our logical volume with the Xfs filesystem, we can type:
-```
-sudo mkfs.xfs /dev/newVG/newLV
-```
-After formatting, we mount it to ```/data``` directory:
-```
-sudo mount xfs /dev/newVG/newLV /data
-```
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/lvm_created.png" width="600" height="500">
-
-To make the mounts persistent, add them to ```/etc/fstab```:
-```
-sudo nano /etc/fstab
-```
-```
-/dev/newVG/newLV /data xfs defaults 0 0
-```
-Save ```ctrl+s``` and exit ```ctrl+x```.
-
-Then, type ```mount -a```.
-
-The operating system should now mount the LVM logical volumes automatically at boot.
-
-## :pushpin: Add another 10GB disk to the VM. Add it to the existing LVM.
-we will add 10GB disk from virtual box and after this we will first create the physical volume of newly added disk i.e ```/dev/sdd```.
-Creating pv of new disk i.e /dev/sdd
-```
-sudo pvcreate /dev/sdd
-```
-Then we will the extend the already created vg (```newVG```).
-```
-sudo vgextend newVG /dev/sdd 
-```
-After this, we will expand our logical volume. Here I am expanding my lv ```newLV``` maximum (10GB).
-```
-sudo lvextend -l +9G /dev/newVg/newLV
-```
-After Extending, we need to re-size the file-system using. As I have used the Xfs file system earlier to create ```newLV``` LV. So we will resize it by using the following command:
-```
-sudo xfs_growfs /dev/newVG/newLV
-```
- 
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/extended_lvm.png">
+****1. summary for the day/week/month:
+highest requested host
+highest requested upstream_ip
+highest requested path (upto 2 subdirectories ex: /check/balance)
 
 
-## :pushpin: Run a HTTP server on this VM. Make sure that the server starts automatically when the system starts.
-#### Install the Apache2 web server software as follows.
-```
-sudo apt install apache2
-```
-#### Managing the Apache in Ubuntu 20.04
-```
-sudo systemctl stop apache2      #stop apache2
-sudo systemctl start apache2     #start apache2
-sudo systemctl restart apache2   #restart apache2
-sudo systemctl reload apache2    #reload apache2
-sudo systemctl disable apache2   #disable apache2
-sudo systemctl enable apache2    #enable apache2
-```
-#### Configuring Apache in Ubuntu 20.04
-```
-sudo vim /etc/apache2/apache2.conf 
-```
-Add below line after ```#ServerRoot "/etc/apache2"```
-```
-ServerName "your VM ip"
-```
-```
-ServerName 192.168.176.254
-```
-After adding the server name in the apache configuration, check the configuration syntax for correctness, and restart the service.
-```
-sudo apache2ctl configtest
-sudo systemctl restart apache2
-```
- Now when you check the apache2 service status, the warning should not appear.
- ```
- sudo systemctl status apache2
- ```
- Double checking server is runnning or not :
- ```
- curl -I 192.168.176.254
- curl -head 192.168.176.254
- ```
- 
- <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/server_verification.png">
- 
-## :pushpin: The users in the group interns should be able to login via private key, and not a password.
-Generated the key using ```ssh``` command ```ssh-keygen```.
-SSh keygen generates two types of keys public key and private key. And we have to copy public key. So type the followimg command.
-```
-ssh-copy-id -i ~/.ssh/id_rsa.pub hostname@your-server-ip
+****2. total requests per status code (Ex: count of requests returning 404/401/502/504/500/200)
 
-ssh-copy-id -i ~/.ssh/id_rsa.pub mehul-intern@192.168.176.254
-```
-That's it now you can login by using ```ssh mehul-intern@192.168.176.254```
+****3. Top requests
+top 5 requests by upstream_ip
+top 5 requests by host
+top 5 requests by bodyBytesSent
+top 5 requests by path (upto 2 subdirectories ex: /check/balance)
+top 5 requests with the highest response time
+get top 5 requests returning 200/5xx/4xx per host
 
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/ssh.png">
+****4. find the time last 200/5xx/4xx was received for a particular host
 
-## :pushpin: Mount /var/log on a seperate mount.
-Create and add a new disk to OS. Using LVM attach this disk. Mount this disk using ext4 file system. 
-Configure the OS for single user mode. By typing the command: ```init 1```.
-Move the ```/var/log``` content to new mounted directory. Let’s say newly mounted directory is ```/mnt/tmp_vol```.
-```
-mv /var/log/* /mnt/tmp_vol/
-```
-Now, we will configure new disk to mount On boot.
-First we will un-mount the volume:
-```
-umount /mnt/tmp_vol
-```
-Next we add an entry to the /etc/fstab file to mount this volume to /var/log on bootup:
-```sudo nano /etc/fstab ``` then add this line ```/dev/vg_log/lv_log /var/log ext4 defaults 0 0```
+****5. get all request for the last 10 minutes
 
-Now reload the fstab file to mount the volume:
+****6. get all the requests taking more than 2/5/10 secs to respond
 
-```mount -a```
+****7. get all the requests in the specified timestamp (UI should have the capability to accept to and from timestamp Ex: from: 06/Mar/2021:04:48 to 06/Mar/2021:04:58)
 
-Configure OS For Multi User Mode And Reboot.```init 5```  ```reboot```
+****8. the app should also be able to take the host (Ex: apptwo-new.ppops.com) as input and give the stats mentioned above.
 
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/var_task.png">
-
-<!--- ## :point_right: The http server should only listen on the VMs IP and not localhost. --->
-
-## :pushpin: Using packer automate the entire setup.
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/login_page.png">
+### :pushpin: Create 2 docker images for the above perl and python application. We should be able to access/use the application if the docker container is created from the image.
