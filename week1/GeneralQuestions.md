@@ -45,11 +45,69 @@ You can check the ulimits for any process ID by reading ```/proc/<pid>/limits```
 ### :fire: Find the network traffic and bandwidth usage of the machine.
 ### :fire: Given a file as input, find the processes using that file.
 ### :fire: List files opened by processes (ex: sshd, httpd).
+
 ### :fire: List processes listening on a specific port (ex: PORT 22)
+To find the process/service listening on a particular port, type (specify the port).
+
+```
+lsof -i :80
+```
+
+OR
+
+```
+ss -ltnp | grep -w ':80' 
+
+l – tells netstat to only show listening sockets.
+t – tells it to display tcp connections.
+n – instructs it show numerical addresses.
+p – enables showing of the process ID and the process name.
+grep -w – shows matching of exact string (:80).
+
+```
 ### :fire: Find the status of a service (ex: httpd)
+Command to check status:
+
+```
+sudo systemctl status [service_name]
+
+sudo systemctl status apache2
+```
+
 ### :fire: Find zombie processes on a machine.
+Pipe the output of the ps command through grep to list out any process whose STAT is Z (for zombie).
+
+```
+ps aux | grep 'Z'
+
+```
+
 ### :fire: Find the environment variables on a machine.
+By using ```printenv``` command we can see the environment variables.
+
+```printenv```
+
 ### :fire: Display processes started by a user.
+To view only the processes owned by a specific user, use the following command:
+
+```top -U [username]```
+
+```top -U mehul```
+
+Replace the [username] with the required username
+
+If you want to use ps then
+
+```ps -u [username]```
+
 ### :fire: Kill a process.
 ### :fire: List open ports.
+```ss``` command will list all the open TCP and UDP ports:
+```ss -lntu```
+```
+-l – prints only listening sockets
+-n – shows port number
+-t – enables listing of tcp ports
+-u – enables listing of udp ports
+```
 ### :fire: Find the permission set for a file.
