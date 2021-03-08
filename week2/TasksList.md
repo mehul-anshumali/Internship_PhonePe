@@ -16,10 +16,10 @@ ip, time, httpMethod, path, httpVersion, statusCode, responseTime, upstream_ip:p
 
 ### The stats on the web page/script should show the following:
 
-****1. summary for the day/week/month:
+**1. summary for the day/week/month:
 highest requested host
 highest requested upstream_ip
-highest requested path (upto 2 subdirectories ex: /check/balance)
+highest requested path (upto 2 subdirectories ex: /check/balance)**
 
 
 ****2. total requests per status code (Ex: count of requests returning 404/401/502/504/500/200)
