@@ -36,9 +36,22 @@ LVM functions by layering abstractions on top of physical storage devices. The b
   i) Physical Volume (pv),
   ii) Volume Group (vg), and
   iii) Logical Volumne (lv)
+  
+### Adding Two Hard Disk
+Go to VM OS (UBUNTU) 
+
+```
+- SETTINGS
+    - STORAGE
+        - CONTROLLER (SATA)
+          - CREATE 2 VDIs 
+          - ATTACH 
+          - SAVE.
+```
+
 
 ### Creating and Managing LVM
-Our first step is scan the system for block devices that LVM can see and manage. You can do this by the folllowing command:
+Our first step for creating lvm is to scan the system for block devices that LVM can see and manage. You can do this by the folllowing command:
 ```
 sudo lvmdiskscan
 ```
@@ -230,4 +243,16 @@ Configure OS For Multi User Mode And Reboot.```init 5```  ```reboot```
 <!--- ## :point_right: The http server should only listen on the VMs IP and not localhost. --->
 
 ## :pushpin: Using packer automate the entire setup.
+
+Here is the Packer File:- https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week1/packer
+
+Run packer build:
+
+```
+packer build ubuntu-20.04-live-server-packer.json
+```
+VM OS automated properly, but packer is not logged in to the system automatically, I have to manually type the account username and password. 
+
+**_Still Figuring out How to automate. the log in process._**
+
 <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/login_page.png">
