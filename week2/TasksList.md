@@ -1,8 +1,8 @@
 # :dart: Week 2 Tasks Lists 
 
-**Logfile: https://raw.githubusercontent.com/aratik711/nginx-log-generator/main/access.log**
+Logfile: https://raw.githubusercontent.com/aratik711/nginx-log-generator/main/access.log
 
-**The format of the logs is as follows:**
+The format of the logs is as follows:
 ```
 ip, time, httpMethod, path, httpVersion, statusCode, responseTime, upstream_ip:port, bodyBytesSent, referrer, userAgent, ssl_protocol, content_type, host
 
