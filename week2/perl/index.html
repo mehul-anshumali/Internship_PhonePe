@@ -1,0 +1,64 @@
+Content-type:text/html
+
+<html>
+<head>
+<title>Parsed Nginx Data</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2>Hello Word! This is my first CGI program</h2>
+<button type="button" data-toggle="collapse" data-target="#0">12/Feb/2021</button>
+
+<p id="0" class="collapse"><br/>Highest Requested Hosts, Upstream IP's and Paths Date-Wise<br/>=================================================<br/><br/>+++++++++++++++++++<br/> On "12/Feb/2021"<br/>+++++++++++++++++++<br/><br/>"apptwo.ppops.com" was the highest requested upstream_ip and it was requested 676 times.<br/><br/>"10.77.22.10:80" was the highest requested upstream_ip and it was requested 117 times.<br/><br/>"/myapi/consumers/open                    ystem" was highest requested path and it was requested 6 times.<br/><br/><br/><br/></p>
+
+<button type="button" data-toggle="collapse" data-target="#1">06/Mar/2021</button>
+
+<p id="1" class="collapse"><br/>Highest Requested Hosts, Upstream IP's and Paths Date-Wise<br/>=================================================<br/><br/>+++++++++++++++++++<br/> On "06/Mar/2021"<br/>+++++++++++++++++++<br/><br/>"prod.ppops.pm5" was the highest requested upstream_ip and it was requested 3300 times.<br/><br/>"10.77.22.11:443" was the highest requested upstream_ip and it was requested 501 times.<br/><br/>"/recharge/phone/bandwidth-monitored" was highest requested path and it was requested 15 times.<br/><br/><br/><br/></p>
+
+<button type="button" data-toggle="collapse" data-target="#2">07/Mar/2021</button>
+
+<p id="2" class="collapse"><br/>Highest Requested Hosts, Upstream IP's and Paths Date-Wise<br/>=================================================<br/><br/>+++++++++++++++++++<br/> On "07/Mar/2021"<br/>+++++++++++++++++++<br/><br/>"prod.ppops.pm5" was the highest requested upstream_ip and it was requested 5900 times.<br/><br/>"10.77.22.10:80" was the highest requested upstream_ip and it was requested 893 times.<br/><br/>"/recharge/phone/bandwidth-monitored" was highest requested path and it was requested 24 times.<br/><br/><br/><br/></p>
+
+<button type="button" data-toggle="collapse" data-target="#3">08/Mar/2021</button>
+
+<p id="3" class="collapse"><br/>Highest Requested Hosts, Upstream IP's and Paths Date-Wise<br/>=================================================<br/><br/>+++++++++++++++++++<br/> On "08/Mar/2021"<br/>+++++++++++++++++++<br/><br/>"apptwo-new.ppops.com" was the highest requested upstream_ip and it was requested 1258 times.<br/><br/>"10.77.27.15:80" was the highest requested upstream_ip and it was requested 206 times.<br/><br/>"/check/balance/middleware" was highest requested path and it was requested 10 times.<br/><br/><br/><br/></p>
+
+<p><br/>Total Requests per status code.<br/><br/>=================================<br/><br/>Total requests on status code "100" is 548.<br/><br/>Total requests on status code "200" is 43826.<br/><br/>Total requests on status code "201" is 500.<br/><br/>Total requests on status code "203" is 571.<br/><br/>Total requests on status code "204" is 626.<br/><br/>Total requests on status code "205" is 570.<br/><br/>Total requests on status code "301" is 464.<br/><br/>Total requests on status code "302" is 585.<br/><br/>Total requests on status code "304" is 510.<br/><br/>Total requests on status code "400" is 522.<br/><br/>Total requests on status code "401" is 419.<br/><br/>Total requests on status code "403" is 519.<br/><br/>Total requests on status code "404" is 522.<br/><br/>Total requests on status code "405" is 440.<br/><br/>Total requests on status code "406" is 521.<br/><br/>Total requests on status code "416" is 533.<br/><br/>Total requests on status code "500" is 521.<br/><br/>Total requests on status code "501" is 501.<br/><br/>Total requests on status code "502" is 641.<br/><br/>Total requests on status code "503" is 519.<br/><br/>Total requests on status code "504" is 414.<br/><br/><br/>Top 5 Requested Upstream_ip:<br/>++++++++++++++++++++++++++++++<br/>Upstream_ip : "10.77.22.10:80" requested 1701 times.<br/>Upstream_ip : "10.77.27.14:8443" requested 1683 times.<br/>Upstream_ip : "10.77.22.11:443" requested 1675 times.<br/>Upstream_ip : "10.77.22.12:443" requested 1603 times.<br/>Upstream_ip : "10.77.22.11:80" requested 1598 times.<br/><br/><br/>Top 5 Requested Host:<br/>++++++++++++++++++++++++++++++<br/>Host : "prod.ppops.pm5" requested 11091 times.<br/>Host : "appone.ppops.com" requested 11062 times.<br/>Host : "api.ppops.com" requested 10815 times.<br/>Host : "apptwo.ppops.com" requested 10713 times.<br/>Host : "apptwo-new.ppops.com" requested 10591 times.<br/><br/><br/>Top 5 Requested BodyBytesSent:<br/>++++++++++++++++++++++++++++++<br/>BodyBytesSent : "38" requested 179 times.<br/>BodyBytesSent : "70" requested 160 times.<br/>BodyBytesSent : "51" requested 158 times.<br/>BodyBytesSent : "61" requested 157 times.<br/>BodyBytesSent : "60" requested 157 times.<br/><br/><br/>Top 5 Requested Path:<br/>++++++++++++++++++++++++++++++<br/>Path : "/recharge/phone/bandwidth-monitored" requested 47 times.<br/>Path : "/recharge/dth/empowering" requested 45 times.<br/>Path : "/myapi/kyc/needs-based" requested 38 times.<br/>Path : "/recharge/dth/info-mediaries" requested 37 times.<br/>Path : "/myapi/kyc/groupware" requested 35 times.<br/><br/><br/>Top 5 Requested Response:<br/>+++++++++++++++++++++++<br/><br/>Response Time : "19.998" requested by: "prod.ppops.pm5" requested from: "" IP.<br/><br/>Response Time : "19.978" requested by: "api.ppops.com" requested from: "" IP.<br/><br/>Response Time : "19.975" requested by: "api.ppops.com" requested from: "" IP.<br/><br/>Response Time : "19.969" requested by: "appone.ppops.com" requested from: "" IP.<br/><br/>Response Time : "19.960" requested by: "prod.ppops.pm5" requested from: "" IP.<br/><br/><br/>Top 5 Requested Paths:<br/>+++++++++++++++++++<br/><br/><br/>Status Code : "200" Host : "prod.ppops.pm5" requested 9091 times.<br/><br/>Status Code : "200" Host : "appone.ppops.com" requested 8986 times.<br/><br/>Status Code : "200" Host : "apptwo.ppops.com" requested 8690 times.<br/><br/>Status Code : "200" Host : "api.ppops.com" requested 8588 times.<br/><br/>Status Code : "200" Host : "apptwo-new.ppops.com" requested 8471 times.<br/><br/>Find the time last 200/5xx/4xx was received for a particular host<br/>=================================================================<br/>
+</p>
+<p>203.197.71.95 12/Feb/2021:06:58:18 +1870 "GET /recharge/dth/pricing%20structure HTTP/1.1" 200 0.499 10.77.23.12:443 2866 "-" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7 rv:5.0; en-US) AppleWebKit/536.19.2 (KHTML, like Gecko) Version/5.2 Safari/536.19.2" TLSv1.2/ECDHE-RSA-AES256-GCM-SHA384 62b923587b05d59b-BOM application/json; charset=utf-8 api.ppops.com
+</p>
+<p><br/><br/><br/>Requests taking more than 2 secs to respond :<br/>10.006229.218.34.118apptwo.ppops.com
+</p>
+<p>10.00892.224.110.134api.ppops.com
+</p>
+<p>10.031121.153.105.80api.ppops.com
+</p>
+<p>10.038217.72.18.134apptwo-new.ppops.com
+</p>
+<p>10.045172.83.218.111appone.ppops.com
+</p>
+<p><br/><br/><br/>Requests taking more than 5 secs to respond :<br/>10.006229.218.34.118apptwo.ppops.com
+</p>
+<p>10.00892.224.110.134api.ppops.com
+</p>
+<p>10.031121.153.105.80api.ppops.com
+</p>
+<p>10.038217.72.18.134apptwo-new.ppops.com
+</p>
+<p>10.045172.83.218.111appone.ppops.com
+</p>
+<p><br/><br/><br/>Requests taking more than 10 secs to respond :<br/>10.006229.218.34.118apptwo.ppops.com
+</p>
+<p>10.00892.224.110.134api.ppops.com
+</p>
+<p>10.031121.153.105.80api.ppops.com
+</p>
+<p>10.038217.72.18.134apptwo-new.ppops.com
+</p>
+<p>10.045172.83.218.111appone.ppops.com
+</p>
+<p><br/><br/></p>
+</body>
+</html>
