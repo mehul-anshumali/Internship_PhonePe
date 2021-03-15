@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-logfile=/Users/mehul.intern/development/bash/scripts/access.log
+logfile="uploads/access.log"
 
 
-logfile1=/home/mehul/learning_stuff/bash/first/access.log
+# logfile1=/home/mehul/learning_stuff/bash/first/access.log
 write_file=record.txt
 
 #Total Requests per status code.
@@ -66,19 +66,6 @@ top_5_requested_stat_by_host(){
     done < $write_file
 }
 top_5_requested_stat_by_host
-
-
-
-get_last_status_code(){
-    printf "\nFind the time last 200/5xx/4xx was received for a particular host"
-    printf "\n=================================================================\n"
-    host=$1
-    cat $logfile | grep $host  | awk '{ if($7==200 || ($7>=400 && $7<600)) print}' | sort -rk2 | head -1
-    printf '\n\n'
-}
-
-get_last_status_code api.ppops.com
-
 
 
 request_taking_more_time(){

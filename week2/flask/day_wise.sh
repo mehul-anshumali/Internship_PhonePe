@@ -1,6 +1,5 @@
 #!/bin/bash
-logfile=/Users/mehul.intern/development/bash/scripts/access.log
-logfile1=/home/mehul/learning_stuff/bash/first/access.log
+logfile="uploads/access.log"
 write_file=record.txt
 
 printf "\nHighest Requested Hosts, Upstream IP's and Paths Date-Wise\n"
@@ -32,3 +31,4 @@ highest_requested (){
 # highest_requested 06/Mar/2021
 # highest_requested 07/Mar/2021
 #highest_requested 08/Mar/2021
+

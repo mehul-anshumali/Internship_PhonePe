@@ -84,11 +84,17 @@ def display_record():
     for i in date_list:
         bash_highest_requested_list.append(subprocess.check_output(['bash', '-c', f'. day_wise.sh; highest_requested {i}'], text=True))
 
-    
+    # print(date_list)
+    # print(*bash_highest_requested_list, sep = "\n")
+
+    # edited = ('\n'.join(map(str, bash_highest_requested_list)))
+    # print(edited)
     bash_output_date_wise = zip(date_list, bash_highest_requested_list)
 
-
-    bash_output = subprocess.check_output(['bash', '-c', '. test.sh'], text=True)
+    bash_output = []
+    bash_output.append(subprocess.check_output(['bash', '-c', '. test.sh'], text=True))
+    bash_output = ('\n'.join(map(str, bash_output)))
+    print(bash_output)
     # print(other_ans_list)
     return render_template('record.html', data_date_wise=bash_output_date_wise,  other_bash=bash_output, date=date_list)
    
@@ -127,12 +133,13 @@ def timestamp():
                 
             else:
                 try:
-                    specified_datetime_record.append(subprocess.check_output(['bash', '-c', f'. day_wise.sh; specified_timestamp {fromdate} {fromtime} {todate} {totime}'], text=True))
+                    specified_datetime_record.append(subprocess.check_output(['bash', '-c', f'. specified_timestamp.sh; specified_timestamp {fromdate} {fromtime} {todate} {totime}'], text=True))
+                    # flash(f'Record from {fromdate}:{fromtime} to {todatete}:{totime}', "success")
                 except:
                     flash('Offfoo !!! Error occured', 'danger')
         else:
             try:
-                specified_datetime_record.append(subprocess.check_output(['bash', '-c', f'. day_wise.sh; specified_timestamp {fromdate} {fromtime} {todate} {totime}'], text=True))
+                specified_datetime_record.append(subprocess.check_output(['bash', '-c', f'. specified_timestamp.sh; specified_timestamp {fromdate} {fromtime} {todate} {totime}'], text=True))
             except:
                  flash('Offfoo !!! Please enter the timstamps correctly', 'danger')
     
@@ -146,6 +153,7 @@ def timestamp():
 
 @app.route('/host_record', methods=['GET', 'POST'])
 def hostname_record():
+    host_record = []
     if request.method == 'POST':
         hostname = request.form['hostname']
         print(hostname)
@@ -156,9 +164,16 @@ def hostname_record():
             # return redirect(request.url)
         else:
             flash(f'Great your record of host - {hostname}', "success")
-            return redirect(url_for('display_record'))
-
-    return render_template('app_record.html')
+            # host_record = []
+    
+            for i in host_list:
+                host_record.append(subprocess.check_output(['bash', '-c', f'. host_details.sh; get_last_status_code {i}'], text=True))
+    
+                # flash(f"Enter correct host name!! BTW These are the hostnames {host_list} ", "info")
+            # print(host_record)
+            # return redirect(url_for('hostname_record', host_name=hostname))
+    # print(host_record)
+    return render_template('app_record.html', host_data=host_record)
 
 if __name__ == '__main__':
     app.run(debug=True)

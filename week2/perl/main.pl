@@ -10,7 +10,7 @@ print "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.m
 print "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js\"></script>\n";
 print "</head>\n";
 print "<body>\n";
-print "<h2>Hello Word! This is my first CGI program</h2>\n";
+print "<h2>Parsed Nginx data....</h2>\n";
 @datearray=();
 $LOGFILE = '/Users/mehul.intern/development/bash/scripts/access.log';
 open(LOGFILE) or die("Could not open log file.");
