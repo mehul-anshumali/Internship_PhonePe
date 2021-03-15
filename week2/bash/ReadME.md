@@ -1,4 +1,4 @@
-# Bash Script
+# :round_pushpin: Bash Script
 
 Give the exceutable permission to script:
 
@@ -12,7 +12,7 @@ Run the ```scripts.sh``` file:
 ./scripts.sh
 ```
 
-## Output
+## :round_pushpin: Output
 
 <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week2/bash/bash1.png">
 
