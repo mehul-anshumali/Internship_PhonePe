@@ -20,3 +20,19 @@ perlapp - name of image
 ```
 docker run -it perlapp
 ```
+
+By following above steps it will generate the HTML content in the bash only. You have to type the following command to redirect its output to a ```index.html``` file.:
+
+```
+perl main.py > index.html
+```
+
+Generated HTML content will be copied to ```index.html``` file. Then paste this ```index.html``` file in browser to see the web page.
+
+## Output
+
+HTML Output:
+
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week2/perl/perl_html.png">
+
+
