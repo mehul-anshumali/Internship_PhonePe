@@ -32,7 +32,7 @@ docker run -it -p 5000:5000 flaskapp
 
 # :round_pushpin: Modification Required:
 
-**:point_right: The output of bash script is not formatting in a better way in while passing it through the main view ```app.py``` to templates.**
+**:point_right: The output of the bash script is not formatting in a better way while passing it from the main view ```app.py``` to templates.**
 
 **:point_right: How to add the address or path of newly uplaoded file to script so from the new file the logs are parsed.**
 
