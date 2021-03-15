@@ -1,6 +1,4 @@
 
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/phonepe.png" width="100%">
-
 # Weekly Tasks Lists👇
 
 <h2><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week1"> Week 1 </a></h2>
