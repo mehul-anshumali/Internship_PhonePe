@@ -17,3 +17,11 @@ Run the ```scripts.sh``` file:
 <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week2/bash/bash1.png">
 
 <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week2/bash/bash2.png">
+
+
+## :pray: One Task Left :pray:
+
+```Get all request for the last 10 minutes```
+
+
+
