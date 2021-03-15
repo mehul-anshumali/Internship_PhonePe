@@ -15,7 +15,7 @@ docker image ls
 ## :round_pushpin: Run the docker container
 
 ```
-docker run -d -p 5000:5000 flask-app;
+docker run -d -p 5000:5000 flask-app
 ```
 _"-p - The -p flag maps a port running inside the container to your host."_
 
