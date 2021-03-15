@@ -15,7 +15,7 @@ perlapp - name of image
 . - Built an image from same folder.
 ```
 
-## Run the Docker File
+## Run the Docker Container
 
 ```
 docker run -it perlapp
