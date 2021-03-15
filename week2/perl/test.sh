@@ -1,6 +1,6 @@
 #!/bin/bash
-logfile=/Users/mehul.intern/development/bash/scripts/access.log
-logfile1=/home/mehul/learning_stuff/bash/first/access.log
+logfile="access.log"
+# logfile1=/home/mehul/learning_stuff/bash/first/access.log
 write_file=record.txt
 
 #Total Requests per status code.

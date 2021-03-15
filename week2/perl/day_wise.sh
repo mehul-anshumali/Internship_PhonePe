@@ -1,6 +1,6 @@
 #!/bin/bash
-logfile=/Users/mehul.intern/development/bash/scripts/access.log
-logfile1=/home/mehul/learning_stuff/bash/first/access.log
+logfile="access.log"
+# logfile1=/home/mehul/learning_stuff/bash/first/access.log
 write_file=record.txt
 
 printf "<br/>Highest Requested Hosts, Upstream IP's and Paths Date-Wise<br/>"

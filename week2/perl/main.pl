@@ -12,7 +12,7 @@ print "</head>\n";
 print "<body>\n";
 print "<h2>Parsed Nginx data....</h2>\n";
 @datearray=();
-$LOGFILE = '/Users/mehul.intern/development/bash/scripts/access.log';
+$LOGFILE = 'access.log';
 open(LOGFILE) or die("Could not open log file.");
 foreach $line (<LOGFILE>) {
     
@@ -43,7 +43,7 @@ for(my $i = 0; $i <= $#uniqdate; $i++){
 
     # system('/bin/bash', '-c', 'source test.sh; highest_requested $uniqdate[$i] ') ; 
 }
-my $bash_script = '/Users/mehul.intern/development/Internship_PhonePe/week2/perl/test.sh';
+my $bash_script = './test.sh';
 open(my $pipe, '-|', $bash_script) or die $!;
 while (my $line = <$pipe>){
     print "<p>$line</p>\n";
