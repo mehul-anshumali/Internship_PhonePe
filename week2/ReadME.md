@@ -10,15 +10,15 @@ ip, time, httpMethod, path, httpVersion, statusCode, responseTime, upstream_ip:p
 
 ## :pushpin: Write a bash script to part the logs and provide the stats mentioned below.
 
-### <a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week2/bash"> CLICK ME - BASH :raised_hand_with_fingers_splayed: </a>
+### <a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week2/bash"> CLICK ME - BASH </a> :raised_hand_with_fingers_splayed:
 
 ## :pushpin: Write a perl script to generate the above output in HTML where each Day is a collapsible button ( https://www.w3schools.com/bootstrap/bootstrap_collapse.asp ) and when clicked it shows the stats.
 
-### <a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week2/perl"> CLICK ME - PERL :raised_hand_with_fingers_splayed: </a>
+### <a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week2/perl"> CLICK ME - PERL </a> :raised_hand_with_fingers_splayed:
 
 ## :pushpin: Create a web UI using Python Flask where we upload an nginx log file and it creates a view like the above perl script .
 
-### <a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week2/flask"> CLICK ME - FLASK :raised_hand_with_fingers_splayed: </a>
+### <a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week2/flask"> CLICK ME - FLASK </a> :raised_hand_with_fingers_splayed:
 
 ### The stats on the web page/script should show the following:
 
