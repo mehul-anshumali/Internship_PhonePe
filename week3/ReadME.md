@@ -29,9 +29,11 @@ VM2 forwards the traffic to VM3 port 22
 **```Result, VM1 is connected to VM3`s port 22 ( via VM2`s port 2222)```**
 
 ## 4.) Dynamic routing
-```Implement #2 and #3, with BGP as routing ( using software FRR )```
+```
+Implement #2 and #3, with BGP as routing ( using software FRR )
+```
 
-**```run the same tests as of #2 and #3```**
+**```Run the same tests as of #2 and #3```**
 
 ## 5.) Create 4 VMs
 ```
