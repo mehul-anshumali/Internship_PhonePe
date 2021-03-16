@@ -58,4 +58,4 @@
   In VM2:
   $ ping 192.168.1.1
   ```
-  - These commands show the packets received or loss. If packet loss (preferebly 0% packet loss), is there then it confirms that these two VMs are communication with each other.
+  - These commands show the packets received or loss. If packet loss (preferebly 0% packet loss), is there then it confirms that these two VMs are communicating with each other.
