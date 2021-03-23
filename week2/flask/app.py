@@ -2,7 +2,6 @@ from flask import Flask, flash, render_template, request, redirect, url_for
 import os 
 from werkzeug.utils import secure_filename
 import csv
-# import pandas as pd
 import subprocess
 from datetime import datetime as dt
 
