@@ -53,7 +53,7 @@ top_5_highest_response
 
 #Top 5 requests returning 200/5xx/4xx per host
 top_5_requested_stat_by_host(){
-    cat $logfile | awk '{print $7, $NF}' | sort | uniq -c| sort -nr | head -5 > $write_file
+    cat $logfile | awk '{print $7, $NF, $1}' | sort | uniq -c| sort -nr | head -5 > $write_file
     printf "<br/><br/>Top 5 Requested Paths:<br/>+++++++++++++++++++<br/><br/>"
 
     while read line; do
