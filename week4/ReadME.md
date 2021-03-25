@@ -1,4 +1,4 @@
-VM1
+```VM1
 mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
 Enter password: 
 +--------------------+-------+
@@ -41,3 +41,4 @@ Enter password:
 +--------------------+-------+
 | wsrep_cluster_size | 3     |
 +--------------------+-------+
+```
