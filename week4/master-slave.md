@@ -48,6 +48,7 @@ MariaDB [(none)]> show databases;
 
 ```
 ## Master Master
+```
 master
 MariaDB [(none)]> show databases;
 +--------------------+
@@ -112,3 +113,4 @@ Query OK, 1 row affected (0.000 sec)
 
 MariaDB [(none)]> 
 
+```
