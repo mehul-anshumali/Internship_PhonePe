@@ -45,13 +45,13 @@ Enter password:
 ## Backing Up and Upgrade
 
 ```
-sudo mariadb-backup --backup \
+mariabackup --backup \
       --user=root \
       --target-dir=/home/mehul/backup/
 ```
 The backup must be prepared:
 ```
-sudo mariadb-backup --prepare \
+mariabackup --prepare \
      --target-dir=/home/mehul/backup/
 ```
 
