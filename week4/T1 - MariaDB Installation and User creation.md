@@ -36,12 +36,12 @@ To install MariaDB 10.5.6 on Ubuntu 20.04, you need to add MariaDB repository on
 - **Checking Status**
   The database service should be started automatically after installation.
   ```
-  systemctl status mysql
+  sudo systemctl status mysql
   ```
 - **Login to MariaDB Shell**
   Test login to **MariaDB** shell using mysql command:
   ```
-  mysql -u root -p
+  sudo mysql -u root -p
   ```
 - **Check version using the command**
   ```
