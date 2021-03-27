@@ -1,4 +1,4 @@
-### Install MariaDB 10.5.6 on Ubuntu 20.04 (Focal Fossa)
+## Install MariaDB 10.5.6 on Ubuntu 20.04 (Focal Fossa)
 To install MariaDB 10.5.6 on Ubuntu 20.04, you need to add MariaDB repository on to the system. Then the installation of MariaDB 10.5.6 on Ubuntu 20.04 will be done from the APT repository added without any issues.
 
 - **Update System**
@@ -54,3 +54,47 @@ To install MariaDB 10.5.6 on Ubuntu 20.04, you need to add MariaDB repository on
   1 row in set (0.000 sec)
   MariaDB [(none)]>
   ```
+## Create New MariaDB User
+
+To create a new MariaDB user, type the following command:
+```
+CREATE USER 'mehul'@'%' IDENTIFIED BY 'your-password';
+```
+Once you create user1, check its status by entering:
+```
+MariaDB [(none)]> SELECT User FROM mysql.user;
++-------------+
+| User        |
++-------------+
+| mehul       |
+| mariadb.sys |
+| mysql       |
+| root        |
++-------------+
+4 rows in set (0.001 sec)
+```
+## Create database named Nginx
+To create a database, type the following command:
+```
+MariaDB [(none)]> CREATE DATABASE Nginx;
+```
+To show the list of databases, type the following command:
+```
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| Nginx              |
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.000 sec)
+```
+## Restoring the SQL file in database Nginx
+To restore the any file inside the database, type the following command:
+```
+sudo mysql -u root -p <database_name> < <filename.sql>
+
+sudo mysql -u root -p Nginx < ngnix_access_log.sql;
+```
