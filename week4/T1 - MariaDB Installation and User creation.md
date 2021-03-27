@@ -1,0 +1,56 @@
+### Install MariaDB 10.5.6 on Ubuntu 20.04 (Focal Fossa)
+To install MariaDB 10.5.6 on Ubuntu 20.04, you need to add MariaDB repository on to the system. Then the installation of MariaDB 10.5.6 on Ubuntu 20.04 will be done from the APT repository added without any issues.
+
+- **Update System**
+
+  Ensure your system is updated and install software-properties-common package.
+  ```
+  sudo apt update && sudo apt upgrade
+  sudo apt -y install software-properties-common
+  ```
+- **Import MariaDB gpg key**
+  
+  Run the command below to add Repository Key to the system:
+  ```
+  sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+  ```
+- **Add MariaDB APT repository**
+  
+  After importation of repository GPG key, add the APT repository by running the following command:
+  ```
+  sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://archive.mariadb.org/mariadb-10.5.6/repo/ubuntu/ focal main'
+  ```
+- **Install MariaDB Server on 20.04 Linux**
+
+  The last step is the installation of MariaDB Server:
+  ```
+  sudo apt update
+  sudo apt install mariadb-server mariadb-client
+  ```
+  Hit the **y** key to accept installation of MariaDB 10.5.6 on Ubuntu 20.04 Linux.
+  
+- **Secure MariaDB Server on 20.04 Linux**
+  ```
+  sudo mysql_secure_installation
+  ``` 
+- **Checking Status**
+  The database service should be started automatically after installation.
+  ```
+  systemctl status mysql
+  ```
+- **Login to MariaDB Shell**
+  Test login to **MariaDB** shell using mysql command:
+  ```
+  mysql -u root -p
+  ```
+- **Check version using the command**
+  ```
+  MariaDB [(none)]> SELECT VERSION();
+  +-----------------------------------------+
+  | VERSION() |
+  +-----------------------------------------+
+  | 10.5.6-MariaDB-1:10.5.6+maria~focal     |
+  +-----------------------------------------+
+  1 row in set (0.000 sec)
+  MariaDB [(none)]>
+  ```
