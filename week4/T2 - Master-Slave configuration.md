@@ -144,6 +144,7 @@
       +--------------------+
       | Database           |
       +--------------------+
+      | Nginx              |
       | information_schema |
       | mysql              |
       | performance_schema |
@@ -158,6 +159,7 @@
       +--------------------+
       | Database           |
       +--------------------+
+      | Nginx              |
       | information_schema |
       | mysql              |
       | performance_schema |
@@ -174,16 +176,11 @@
       +--------------------+
       | Database           |
       +--------------------+
+      | Nginx              |
       | information_schema |
       | mysql              |
       | performance_schema |
       | test               |
       +--------------------+
       ```
-
-
-
-
-
-  
-    
+    - Create a database name ```test1``` see if it replicates on master server or not. If not then master-slave setup is successfully configured.
