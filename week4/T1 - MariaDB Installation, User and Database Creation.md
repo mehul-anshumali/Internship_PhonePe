@@ -36,11 +36,13 @@
     sudo mysql_secure_installation
     ``` 
   - **Checking Status**
+  
     The database service should be started automatically after installation.
     ```
     sudo systemctl status mysql
     ```
   - **Login to MariaDB Shell**
+  
     Test login to **MariaDB** shell using mysql command:
     ```
     sudo mysql -u root -p
