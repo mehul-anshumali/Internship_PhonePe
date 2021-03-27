@@ -178,10 +178,10 @@
       +----------------------+------------+-------+
       5 rows in set (0.114 sec)
       ```
-  - Find the time last 200/5xx/4xx was received for a particular host
+  - **Find the time last 200/5xx/4xx was received for a particular host**
   
-  - Get all request for the last 10 minutes
+  - **Get all request for the last 10 minutes**
   
-  - Get all the requests taking more than 2/5/10 secs to respond.
+  - **Get all the requests taking more than 2/5/10 secs to respond.**
   
-  - Get all the requests in the specified timestamp (Ex: from 06/Mar/2021:04:48 to 06/Mar/2021:04:58)
+  - **Get all the requests in the specified timestamp (Ex: from 06/Mar/2021:04:48 to 06/Mar/2021:04:58)**
