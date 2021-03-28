@@ -1,8 +1,8 @@
 # Bridge connectivity or L2 connectivity
-  - Bridge connectivity or L2 connectivity
-    ```
-    Test for connectivity: two VMs should be able to ping each other
-    ```
+  Bridge connectivity or L2 connectivity
+  ```
+  Test for connectivity: two VMs should be able to ping each other
+  ```
 <hr>
 
 - Install seperately two VMs or you can also clone the main VM to generate multiple VMs. 
