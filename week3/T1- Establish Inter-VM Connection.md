@@ -1,3 +1,10 @@
+# Bridge connectivity or L2 connectivity
+  - Bridge connectivity or L2 connectivity
+    ```
+    Test for connectivity: two VMs should be able to ping each other
+    ```
+<hr>
+
 - Install seperately two VMs or you can also clone the main VM to generate multiple VMs. 
   - While cloning make sure that you choose the ```Generate new MAC addresses for all network adapters``` in MAC Address Policy.
 
