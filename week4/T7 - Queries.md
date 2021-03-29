@@ -183,5 +183,38 @@
   - **Get all request for the last 10 minutes**
   
   - **Get all the requests taking more than 2/5/10 secs to respond.**
+   ```
+   MariaDB [Nginx]> select distinct(responseTime), host as requested_by, ip as from_ip from ngnix_access_log where CAST(responseTime as decimal(5,3)) > 2 order by CAST(responseTime as decimal(5,3)) asc limit 10;
+   ```
+   ```
+   +--------------+----------------------+-----------------+
+   | responseTime | requested_by         | from_ip         |
+   +--------------+----------------------+-----------------+
+   | 2.002        | apptwo-new.ppops.com | 206.231.222.78  |
+   | 2.005        | api.ppops.com        | 214.20.39.165   |
+   | 2.014        | prod.ppops.pm5       | 169.213.80.192  |
+   | 2.022        | appone.ppops.com     | 108.228.137.121 |
+   | 2.023        | apptwo.ppops.com     | 21.146.140.86   |
+   | 2.024        | prod.ppops.pm5       | 57.70.201.116   |
+   | 2.037        | apptwo-new.ppops.com | 157.221.60.36   |
+   | 2.039        | appone.ppops.com     | 125.172.169.110 |
+   | 2.042        | prod.ppops.pm5       | 151.197.55.243  |
+   | 2.062        | appone.ppops.com     | 213.179.135.131 |
+   +--------------+----------------------+-----------------+
+   ```
   
   - **Get all the requests in the specified timestamp (Ex: from 06/Mar/2021:04:48 to 06/Mar/2021:04:58)**
+   ```
+   MariaDB [Nginx]> select host, ip, path, time,count(*) as count from ngnix_access_log where time between '06/Mar/2021:00:00:00' and '06/Mar/2021:23:55:55' group by host order by count desc;
+   ```
+   ```
+   +----------------------+---------------+---------------------------------------------------------+----------------------------+-------+
+   | host                 | ip            | path                                                    | time                       | count |
+   +----------------------+---------------+---------------------------------------------------------+----------------------------+-------+
+   | prod.ppops.pm5       | 0.134.114.15  | /check/balance/Re-engineered/Graphic%20Interface        | 06/Mar/2021:07:27:39 +3970 |  3300 |
+   | appone.ppops.com     | 0.10.20.123   | /recharge/phone/parallelism%20Optimized/homogeneous     | 06/Mar/2021:07:31:36 +3670 |  3288 |
+   | api.ppops.com        | 0.125.114.184 | /myapi/consumers/definition/Operative/solution-oriented | 06/Mar/2021:07:16:58 +5870 |  3174 |
+   | apptwo.ppops.com     | 0.105.114.213 | /recharge/phone/Reactive-functionalities/optimal        | 06/Mar/2021:07:18:51 +5170 |  3126 |
+   | apptwo-new.ppops.com | 0.10.237.185  | /myapi/kyc/migration%20orchestration                    | 06/Mar/2021:07:28:01 +0170 |  3075 |
+   +----------------------+---------------+---------------------------------------------------------+----------------------------+-------+
+   ```
