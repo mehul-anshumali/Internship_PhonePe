@@ -10,7 +10,7 @@
  
   - **Stop the Galera Cluster node**
  
-    -  Before the old version can be uninstalled, we first need to stop the node.
+    -  Before uninstalling the old version, we first need to stop the node.
       ```
       sudo systemctl stop mariadb
       ```
