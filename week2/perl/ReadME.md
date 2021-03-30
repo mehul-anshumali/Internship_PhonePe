@@ -1,6 +1,6 @@
 # Perl 
 
-## ::round_pushpin:: Install Docker in Mac
+## :round_pushpin: Install Docker in Mac
 Follow this detailed post to download and install Docker Desktop on your system - :point_right: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
 
 ## :round_pushpin: Build a Docker Image 
