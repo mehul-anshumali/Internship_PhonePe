@@ -1,4 +1,4 @@
-# :dart: Week 4 Tasks Lists 
+# Week 4 Tasks Lists 
 
 1. On a standalone VM, install MariaDB 10.5.6 and create a user same as your laptop login user then, create database Nginx and restore the SQL file attached in the mail.
 2. On an another VM install MariaDB and configure it as the slave of the MariaDB installed in above step.
