@@ -1,2 +1,2 @@
-# Truncate the partitions from week 21 to 25;
+# Truncate the partitions from week 21 to 25
 
