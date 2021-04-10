@@ -1,4 +1,4 @@
-# :dart: Week 4 Tasks Lists 
+# Week 4 Tasks Lists 
 # Introduction to Ansible
 - ### Intent: Learn the fundamentals of Ansible 
   - Task: Run a shell command on 3 VMs from your local machine and save its output in a file locally.
