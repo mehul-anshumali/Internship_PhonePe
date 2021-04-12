@@ -12,3 +12,5 @@
 * <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week5"> Week 5 </a></h3>
 
 * <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week6"> Week 6 </a></h3>
+
+* <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week7"> Week 7 </a></h3>
