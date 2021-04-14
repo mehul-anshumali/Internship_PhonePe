@@ -1,6 +1,15 @@
+# Install VBOX on your laptop
+- Downloded & Installed VBox. 
+  - 👉 https://www.virtualbox.org/wiki/Downloads
+  
+# Download Ubuntu Focal ISO
+- Downloaded Ubuntu Server 20.04 Focal Fossia.
+  - 👉 https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso
+
+# Install Ubuntu Focal ( give 2 cpu cores and 512 MB of RAM . Do not install the GUI. )
+  - Installed Ubuntu Server 20.04 Focal Fossia.
+
 # Create users who are a part of internship. Create a group named ```intern``` and add users to that group.
-- Downlaod & Installed VBox.
-- Download & Installed Ubuntu Server 20.04 Focal Fossia.
 - To create a user or add a new user, enter the following command in your shell:
   ```
   sudo adduser <username>
