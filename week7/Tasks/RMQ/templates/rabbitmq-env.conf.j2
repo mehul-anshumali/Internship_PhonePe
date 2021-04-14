@@ -1,0 +1,13 @@
+ERL_SSL_PATH="/usr/lib/erlang/lib/ssl-9.2.3.7/ebin"
+
+SERVER_ADDITIONAL_ERL_ARGS="-pa $ERL_SSL_PATH \
+  -proto_dist inet_tls \
+  -ssl_dist_opt server_certfile {{certificate_dest}}combined_keys.pem \
+  -ssl_dist_opt server_password {{password}} \
+  -ssl_dist_opt server_secure_renegotiate true client_secure_renegotiate true"
+
+RABBITMQ_CTL_ERL_ARGS="-pa $ERL_SSL_PATH \
+  -proto_dist inet_tls \
+  -ssl_dist_opt server_certfile {{certificate_dest}}combined_keys.pem \
+  -ssl_dist_opt server_password {{password}} \
+  -ssl_dist_opt server_secure_renegotiate true client_secure_renegotiate true"

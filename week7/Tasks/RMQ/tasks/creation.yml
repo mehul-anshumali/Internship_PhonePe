@@ -1,0 +1,30 @@
+---
+
+- name: Create Vhost, User and set permission
+  command: rabbitmqctl {{ item }}
+  ignore_errors: yes
+  loop:
+    - add_vhost {{ vhost }}
+    - add_user {{ user }} {{ user_password }}
+    - set_permissions {{ user }} --vhost {{ vhost }} ".*" ".*" ".*"
+    - set_user_tags {{ user }}  management
+
+- name: Monitor User
+  command: rabbitmqctl {{ item }}
+  ignore_errors: yes
+  loop: 
+    - add_user {{ monitor_user }} {{ monitor_password }}
+    - set_user_tags monitoring monitoring
+    - set_permissions -p {{ vhost }} {{ monitor_user }} "" "" ""
+
+- name: Management Plugin
+  command: "{{ item }}"
+  ignore_errors: yes
+  loop: 
+    - rabbitmq-plugins enable rabbitmq_management
+    - rabbitmqctl add_user {{management_user}} {{management_pass}}
+    - rabbitmqctl set_user_tags {{management_user}} administrator
+    - rabbitmqctl set_permissions -p / {{management_user}} ".*" ".*" ".*"
+    - rabbitmqctl delete_user guest
+  notify:
+    restart rabbitmq-server

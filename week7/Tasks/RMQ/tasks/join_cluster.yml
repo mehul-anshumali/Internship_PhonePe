@@ -1,0 +1,17 @@
+---
+- name: Join cluster - stop_app
+  command: rabbitmqctl stop_app
+  when: ansible_enp0s8.ipv4.address != groups['all'][0]
+
+- name: Join cluster - join_cluster
+  command: rabbitmqctl join_cluster rabbit@{{ rabbitmq_cluster_master }}
+  when: ansible_enp0s8.ipv4.address != groups['all'][0]
+
+- name: Join cluster - start_app
+  command: rabbitmqctl start_app
+  when: ansible_enp0s8.ipv4.address != groups['all'][0]
+
+- name: Restart rabbitmq-server 
+  service:
+    name: rabbitmq-server
+    state: restarted

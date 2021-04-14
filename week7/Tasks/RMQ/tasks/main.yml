@@ -1,0 +1,10 @@
+---
+# Tasks files for RabbitMQ
+- include_tasks: install.yml
+
+- include_tasks: hosts.yml
+  when: update_hosts
+
+- include_tasks: cluster.yml
+  
+- include_tasks: creation.yml

@@ -1,0 +1,22 @@
+---
+# Setup cluster
+
+- name: Update Erlang cookie
+  template:
+    src: erlang.cookie.j2
+    dest: /var/lib/rabbitmq/.erlang.cookie
+    owner: rabbitmq
+    group: rabbitmq
+    mode: 0400
+  notify:
+    stop rabbitmq-server
+
+- include_tasks: tls.yml
+  when: enable_tls
+
+- name: Start rabbitmqctl app
+  command: rabbitmqctl start_app
+
+- include_tasks: join_cluster.yml
+  when: create_cluster
+

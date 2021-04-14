@@ -1,0 +1,37 @@
+---
+rabbitmq_cluster_master: ubuntu1
+
+
+erlang_cookie: JFKZVCBYEISEQILVZMSD
+
+update_hosts: false
+
+enable_tls: false
+
+create_cluster: false
+
+ca_certificate: files/ca_certificate.pem 
+
+server_certificate: files/server_certificate.pem
+
+server_key: files/server_key.pem
+
+combined_key: files/combined_keys.pem
+
+password: mehul
+
+certificate_dest: /etc/rabbitmq/ssl/
+
+vhost: testvhost
+
+user : testuser
+
+user_password: testpassword
+
+monitor_user: monitoring
+
+monitor_password: monpassword
+
+management_user: mehul
+
+management_pass: mehul
