@@ -3,4 +3,4 @@
   - At the time of creation of queue make ```Durable = True``` & 
   - At the times of publishing messages make the ```delivery_mode = 2```.
  
-Referred article:- https://kousiknath.medium.com/dabbling-around-rabbit-mq-persistence-durability-message-routing-f4efc696098c
+Ariticle referred :- https://kousiknath.medium.com/dabbling-around-rabbit-mq-persistence-durability-message-routing-f4efc696098c
