@@ -67,4 +67,4 @@
     $ sudo rabbitmqctl delete_user guest
     ```
     
-  - ### Go to browser give ```ip:15672``` can able to see the RabbitMQ management UI.    
+  - ### Go to browser give ```http://your-ip:15672/``` can able to see the RabbitMQ management UI.    
