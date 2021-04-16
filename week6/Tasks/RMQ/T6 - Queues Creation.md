@@ -2,7 +2,7 @@
 - To create queue use ```rabbitmqadmin``` utility:
 
   - Create ```DATA``` queue: 
-   
+
    ```
    $ ./rabbitmqadmin -u testuser -p testpassword --vhost testvhost declare queue name=DATA durable=true
    ```
