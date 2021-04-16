@@ -1,0 +1,31 @@
+- name: confirm whether user really meant to purge the cluster
+  hosts: all
+  become: true
+  become_method: sudo
+
+  vars_prompt:
+    - name: destroycluster
+      prompt: Are you sure you want to destroy the cluster?
+      default: 'no'
+      private: no
+
+  tasks:
+  - name: exit playbook, if user did not mean to destroy cluster
+    fail:
+      msg: >
+        "Exiting purge-cluster playbook, cluster was NOT purged.
+         To purge the cluster, either say 'yes' on the prompt."
+    when: destroycluster != 'yes'
+
+  # - name: Purging cluster
+  #   lineinfile:
+  #       path: /etc/mysql/conf.d/galera.cnf
+  #       regexp: '^wsrep_on='
+  #       line: wsrep_on=OFF
+  #   ignore_errors: yes
+  #   when: destroycluster == 'yes'
+
+  - name: Purging everything
+    command: apt-get purge mariadb-server 
+    when: destroycluster == 'yes'
+ 
