@@ -1,0 +1,7 @@
+---
+- name: RabbitMQ Installation and Configuration
+  hosts: all
+  become: true
+  become_method: sudo 
+  roles:
+  - ansible_rabbitmq

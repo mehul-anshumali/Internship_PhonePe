@@ -1,0 +1,12 @@
+---
+# defaults file for elasticsearch
+enable_cluster: true
+enable_tls: true
+# ca_certs: files/ca.crt
+# server_certs1: files/ubuntu1.crt
+# server_key1: files/ubuntu1.key
+# server_certs2: files/ubuntu2.crt
+# server_key2: files/ubuntu2.key
+# server_certs3: files/ubuntu3.crt
+# server_key3: files/ubuntu3.key
+# dest_dir: "/etc/elasticsearch/certs/"

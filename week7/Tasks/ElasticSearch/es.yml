@@ -1,0 +1,7 @@
+---
+- name: Elasticsearch Installation and Configuration
+  hosts: week7
+  become: true
+  become_method: sudo
+  roles:
+  - ansible_es

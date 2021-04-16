@@ -1,0 +1,16 @@
+---
+# Handlers for RabbitMQ
+- name: Restart Elasticsearch
+  service: 
+    name: elasticsearch
+    state: restarted
+
+- name: Start Elasticsearch
+  service: 
+    name: elasticsearch
+    state: started
+
+- name: Stop Elasticsearch
+  service: 
+    name: elasticsearch
+    state: stopped

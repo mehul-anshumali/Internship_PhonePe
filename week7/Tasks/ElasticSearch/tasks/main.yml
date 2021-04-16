@@ -1,0 +1,5 @@
+---
+# tasks file for ansible_es
+#- include_tasks: install.yml
+
+- include_tasks: cluster.yml

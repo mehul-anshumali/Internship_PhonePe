@@ -1,0 +1,35 @@
+---
+- name: SERVICE | Stop Elasticsearch
+  service:
+    name: elasticsearch
+    state: stopped
+
+- name: Elasticsearch "certs" directory
+  file:
+    path: "/etc/elasticsearch/certs"
+    owner: "elasticsearch"
+    group: "elasticsearch"
+    state: directory
+
+- name: Copy certificates Ubuntu1
+  copy: 
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "elasticsearch"
+    group: "elasticsearch"
+  loop:
+    - { src: "files/ca.crt", dest: "/etc/elasticsearch/certs/ca.crt" }
+    - { src: "files/{{ ansible_hostname }}.crt", dest: "/etc/elasticsearch/certs/{{ ansible_hostname }}.crt" }
+    - { src: "files/{{ ansible_hostname }}.key", dest: "/etc/elasticsearch/certs/{{ ansible_hostname }}.key" }
+  
+
+- name: Configure elasticsearch.yml file
+  template:
+    src: "elasticsearch.yml.j2"
+    dest: "/etc/elasticsearch/elasticsearch.yml"
+    owner: "elasticsearch"
+    group: "elasticsearch"
+  notify: Restart Elasticsearch
+  changed_when: true
+    
+
