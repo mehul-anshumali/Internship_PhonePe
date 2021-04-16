@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - shell: 'echo "hello from $(hostname)" '
+      register: hostname
+      ignore_errors: True
+    - local_action: copy content= dest=out.txt
