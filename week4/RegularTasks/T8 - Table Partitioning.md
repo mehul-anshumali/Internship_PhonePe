@@ -1,1 +1,71 @@
 # Create partitioning on this table using the time values, the table should have weekly partitions.
+- To partiton table based on week, we need to add a new column called - ```week_no``` which stores the week_no on which the date is following.
+  ```
+  MariaDB [Nginx]> alter table ngnix_access_log add week_no int null;
+  MariaDB [Nginx]> update ngnix_access_log set week_no = weekofyear(str_to_date(substring_index(time,':', 1),'%d/%b/%Y'))
+  ```
+- Next, we have to drop the primary key's:
+  ```
+  MariaDB [Nginx]> ALTER TABLE ngnix_access_log DROP PRIMARY KEY;
+  MariaDB [Nginx]> ALTER TABLE ngnix_access_log ADD PRIMARY KEY(ip,time,partition_id);
+  ```
+- Make partitions:
+  ```
+  Alter table ngnix_access_log PARTITION BY RANGE ('partition_id')
+  (PARTITION 'p0' VALUES LESS THAN (1) ENGINE = InnoDB,
+  PARTITION 'week1' VALUES LESS THAN (2) ENGINE = InnoDB,
+  PARTITION 'week2' VALUES LESS THAN (3) ENGINE = InnoDB,
+  PARTITION 'week3' VALUES LESS THAN (4) ENGINE = InnoDB,
+  PARTITION 'week4' VALUES LESS THAN (5) ENGINE = InnoDB,
+  PARTITION 'week5' VALUES LESS THAN (6) ENGINE = InnoDB,
+  PARTITION 'week6' VALUES LESS THAN (7) ENGINE = InnoDB,
+  PARTITION 'week7' VALUES LESS THAN (8) ENGINE = InnoDB,
+  PARTITION 'week8' VALUES LESS THAN (9) ENGINE = InnoDB,
+  PARTITION 'week9' VALUES LESS THAN (10) ENGINE = InnoDB,
+  PARTITION 'week10' VALUES LESS THAN (11) ENGINE = InnoDB,
+  PARTITION 'week11' VALUES LESS THAN (12) ENGINE = InnoDB,
+  PARTITION 'week12' VALUES LESS THAN (13) ENGINE = InnoDB,
+  PARTITION 'week13' VALUES LESS THAN (14) ENGINE = InnoDB,
+  PARTITION 'week14' VALUES LESS THAN (15) ENGINE = InnoDB,
+  PARTITION 'week15' VALUES LESS THAN (16) ENGINE = InnoDB,
+  PARTITION 'week16' VALUES LESS THAN (17) ENGINE = InnoDB,
+  PARTITION 'week17' VALUES LESS THAN (18) ENGINE = InnoDB,
+  PARTITION 'week18' VALUES LESS THAN (19) ENGINE = InnoDB,
+  PARTITION 'week19' VALUES LESS THAN (20) ENGINE = InnoDB,
+  PARTITION 'week20' VALUES LESS THAN (21) ENGINE = InnoDB,
+  PARTITION 'week21' VALUES LESS THAN (22) ENGINE = InnoDB,
+  PARTITION 'week22' VALUES LESS THAN (23) ENGINE = InnoDB,
+  PARTITION 'week23' VALUES LESS THAN (24) ENGINE = InnoDB,
+  PARTITION 'week24' VALUES LESS THAN (25) ENGINE = InnoDB,
+  PARTITION 'week25' VALUES LESS THAN (26) ENGINE = InnoDB,
+  PARTITION 'week26' VALUES LESS THAN (27) ENGINE = InnoDB,
+  PARTITION 'week27' VALUES LESS THAN (28) ENGINE = InnoDB,
+  PARTITION 'week28' VALUES LESS THAN (29) ENGINE = InnoDB,
+  PARTITION 'week29' VALUES LESS THAN (30) ENGINE = InnoDB,
+  PARTITION 'week30' VALUES LESS THAN (31) ENGINE = InnoDB,
+  PARTITION 'week31' VALUES LESS THAN (32) ENGINE = InnoDB,
+  PARTITION 'week32' VALUES LESS THAN (33) ENGINE = InnoDB,
+  PARTITION 'week33' VALUES LESS THAN (34) ENGINE = InnoDB,
+  PARTITION 'week34' VALUES LESS THAN (35) ENGINE = InnoDB,
+  PARTITION 'week35' VALUES LESS THAN (36) ENGINE = InnoDB,
+  PARTITION 'week36' VALUES LESS THAN (37) ENGINE = InnoDB,
+  PARTITION 'week37' VALUES LESS THAN (38) ENGINE = InnoDB,
+  PARTITION 'week38' VALUES LESS THAN (39) ENGINE = InnoDB,
+  PARTITION 'week39' VALUES LESS THAN (40) ENGINE = InnoDB,
+  PARTITION 'week40' VALUES LESS THAN (41) ENGINE = InnoDB,
+  PARTITION 'week41' VALUES LESS THAN (42) ENGINE = InnoDB,
+  PARTITION 'week42' VALUES LESS THAN (43) ENGINE = InnoDB,
+  PARTITION 'week43' VALUES LESS THAN (44) ENGINE = InnoDB,
+  PARTITION 'week44' VALUES LESS THAN (45) ENGINE = InnoDB,
+  PARTITION 'week45' VALUES LESS THAN (46) ENGINE = InnoDB,
+  PARTITION 'week46' VALUES LESS THAN (47) ENGINE = InnoDB,
+  PARTITION 'week47' VALUES LESS THAN (48) ENGINE = InnoDB,
+  PARTITION 'week48' VALUES LESS THAN (49) ENGINE = InnoDB,
+  PARTITION 'week49' VALUES LESS THAN (50) ENGINE = InnoDB,
+  PARTITION 'week50' VALUES LESS THAN (51) ENGINE = InnoDB,
+  PARTITION 'week51' VALUES LESS THAN (52) ENGINE = InnoDB,
+  PARTITION 'week52' VALUES LESS THAN (53) ENGINE = InnoDB,
+  PARTITION 'week53' VALUES LESS THAN (54) ENGINE = InnoDB,
+  PARTITION 'week54' VALUES LESS THAN MAXVALUE ENGINE = InnoDB);
+  ```
+  
