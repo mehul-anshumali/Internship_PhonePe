@@ -1,0 +1,24 @@
+---
+- name: Configuring Galera Cluster
+  hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: configuring galera cnf
+      template: src=cluster.cnf.j2 dest=/etc/mysql/conf.d/galera.cnf
+        owner=root group=root mode=0644
+          
+    - name: SERVICE | Stop MariaDB
+      service:
+        name: mysql
+        state: stopped
+
+    - name: COMMAND | first node
+      command: galera_new_cluster
+      when: ansible_enp0s8.ipv4.address == groups['all'][0]
+    
+    - name: SERVICE | Start MariaDB
+      service:
+        name: mysql
+        state: started
+      # when: ansible_enp0s8.ipv4.address != groups['all'][0]
