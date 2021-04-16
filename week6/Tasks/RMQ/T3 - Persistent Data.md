@@ -1,5 +1,5 @@
 # Data should be persisted on disk.
-- For data be persistent on disk 
+- For data to be persistent on disk 
   - At the time of creation of queue make ```Durable = True``` & 
   - At the times of publishing messages make the ```delivery_mode = 2```.
  
