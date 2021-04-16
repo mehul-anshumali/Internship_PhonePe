@@ -15,3 +15,10 @@
     ```
     $ ./rabbitmqadmin -u testuser -p testpassword list queues
     ```
+- ## Setup HA-Policy.
+  - Setup ha policy named ```ha-all``` which all queues on the RabbitMQ cluster will be mirroring to all nodes on the cluster.
+  
+    ```
+    $ sudo rabbitmqctl set_policy -p testvhost ha-all ".*" ‘{"ha-mode":"all"}'
+    ```
+ 
