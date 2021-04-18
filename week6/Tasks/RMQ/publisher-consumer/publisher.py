@@ -15,7 +15,11 @@ def main():
     channel.exchange_declare(exchange='testExchange',
                             exchange_type='direct',
                             durable=True)
-
+    
+    channel.queue_bind(exchange='testExchange', 
+                    queue='DATA', 
+                    routing_key='testRoute')
+    
     # msg = ' '.join(sys.argv[1:]) or 'Hello'
 
     msg_props = p.BasicProperties(delivery_mode=2)
