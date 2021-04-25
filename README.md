@@ -1,4 +1,4 @@
-<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/phonepe.png" width="100%">
+<img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/phonepe.png" width="100%" height="350px">
 <hr>
 
 * <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week1"> Week 1 </a></h3> 
