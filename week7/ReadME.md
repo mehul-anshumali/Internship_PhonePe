@@ -1,6 +1,9 @@
 # Week 7 Tasks List
-- You need to automate the setup of the following datastores using ansible, there should be no manual process in the setup.
-- Everything from installation, configuration to creation of users should be handled via ansible.
+```
+This week you will be automating the setup for the datastore you worked on last week.
+* You need to automate the setup of the following datastores using ansible, there should be no manual process in the setup.
+* Everything from installation, configuration to creation of users should be handled via ansible.
+```
 
   - ## Elasticsearch:
     - Install and configure 3 nodes elasticsearch cluster version 7.8.0
