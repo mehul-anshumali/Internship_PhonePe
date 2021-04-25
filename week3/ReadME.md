@@ -1,4 +1,7 @@
 # Week 3 Tasks Lists 
+```
+These week would concentrate on Network basics
+```
 
 ## 1.) Bridge connectivity or L2 connectivity
 - Create two VMs, assign an IP from the same /24 subnet and establish connectivity between those two VMs
