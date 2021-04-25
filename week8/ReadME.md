@@ -1,6 +1,6 @@
 # Week 8 Tasks List
 ```
-This week you will be monitoring the setup for the datastore you worked on last week.
+This week you will be monitoring the setup for the datastore you worked on week7.
 ```
 - Setup collectd to monitor various metrics for operating system and one of the following datastores ES/RMQ/AS.
 - Setup influxdb on a vm.
