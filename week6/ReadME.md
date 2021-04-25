@@ -1,11 +1,11 @@
 # Week 6 Tasks List
 ```
 This week's agenda is:
-- To understand the use/function/working of various data stores.
-- Find out various settings/configurations available and apply the most optimum settings.
-- Learn about how these systems work wrt the CAP theorem
-- Learn about the various monitoring APIs/endpoints/commands exposed by these tools
-- And gain maintenance and debugging knowledge.
+* To understand the use/function/working of various data stores.
+* Find out various settings/configurations available and apply the most optimum settings.
+* Learn about how these systems work wrt the CAP theorem
+* Learn about the various monitoring APIs/endpoints/commands exposed by these tools
+* And gain maintenance and debugging knowledge.
 ```
   - ## Elasticsearch:
     - Install and configure 1 node elasticsearch cluster version 7.8.0
