@@ -1,4 +1,7 @@
-# Week 2 Tasks Lists 
+# Week 2 Tasks Lists
+```
+This week would concentrate around Bash/Perl/Python/Docker and learning how to parse data.
+```
 
   - Logfile: https://raw.githubusercontent.com/aratik711/nginx-log-generator/main/access.log
   - The format of the logs is as follows:
