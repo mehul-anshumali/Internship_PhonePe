@@ -13,6 +13,6 @@
   ```
 - ## Start the influxdb service
   ```
-  sudo systemctl start influxdb
+  sudo systemctl start influxdb.service
   ```
 
