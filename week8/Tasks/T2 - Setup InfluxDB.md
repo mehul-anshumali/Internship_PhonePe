@@ -11,4 +11,8 @@
   ```
   sudo apt-get update && sudo apt-get install influxdb
   ```
+- ## Start the influxdb service
+  ```
+  sudo systemctl start influxdb
+  ```
 
