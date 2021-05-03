@@ -1,16 +1,16 @@
 # Create partitioning on this table using the time values, the table should have weekly partitions.
 - To partiton table based on week, we need to add a new column called - ```week_no``` which stores the week_no on which the date is following.
-  ```
+  ```sql
   MariaDB [Nginx]> alter table ngnix_access_log add week_no int null;
   MariaDB [Nginx]> update ngnix_access_log set week_no = weekofyear(str_to_date(substring_index(time,':', 1),'%d/%b/%Y'))
   ```
 - Next, we have to drop the primary key's:
-  ```
+  ```sql
   MariaDB [Nginx]> ALTER TABLE ngnix_access_log DROP PRIMARY KEY;
   MariaDB [Nginx]> ALTER TABLE ngnix_access_log ADD PRIMARY KEY(ip,time,partition_id);
   ```
 - Make partitions:
-  ```
+  ```sql
   Alter table ngnix_access_log PARTITION BY RANGE ('partition_id')
   (PARTITION 'p0' VALUES LESS THAN (1) ENGINE = InnoDB,
   PARTITION 'week1' VALUES LESS THAN (2) ENGINE = InnoDB,
