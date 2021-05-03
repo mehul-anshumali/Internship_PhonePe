@@ -1,6 +1,7 @@
 import psutil as ps, bernhard, requests, json
 
 host = '192.168.159.43'
+# Client connection
 r_client = bernhard.Client()
 
 metrics_dict =  dict()
@@ -9,15 +10,16 @@ def send_to_riemann(service, metric, state):
     r_client.send({'host': host, 'service': service, 'metric': metric, 'state': state})
 
 def collect_metrics():
-    # metrics_list = [
-    #     'cpu_usage_percentage',
-    #     'ram_usage',
-    #     'disk_usage',
-    #     'swap_usage',
-    #     'rabbitmq_queues',
-    #     'rabbitmq_hwm'
-    # ]
-
+    '''
+    metrics_list = [
+             'cpu_usage_percentage',
+             'ram_usage',
+             'disk_usage',
+             'swap_usage',
+             'rabbitmq_queues',
+             'rabbitmq_hwm'
+         ]
+    '''
     cpu = ps.cpu_percent(interval=0.5)
     update_metrics_dict('cpu_usage_percentage', cpu, cpu)
 
@@ -42,31 +44,19 @@ def collect_metrics():
     json_data = json.loads(queue_response.text) 
 
     for queue in json_data:
-        # print('Queue: {q} and MessageCount: {mc}'.format(q=queue['name'], mc=queue['messages']))
+        # Update metrcics dictionary
         update_metrics_dict(queue['name'] + str('(Queue Messages)'), queue['messages'], '')
     
     json_data = json.loads(hwm_response.text) 
 
     for node in json_data:
-        # print('Queue: {q} and MessageCount: {mc}'.format(q=queue['name'], mc=queue['messages']))
         mem_used = node['mem_used']
-        #print(mem_used)
-        #mem_usage_percent = int(((mem_used / 1024 / 1024) / 410) * 100)
+        # Calculating RabbitMQ memory usage per node.
         mem_usage_percent = (mem_used / (1024 ** 2)) / (410/100)
-        #print(mem_usage_percent)
+        
+        # Update metrcics dictionary
         update_metrics_dict(node['name'] + str('(Memory Used)'), node['mem_used'], mem_usage_percent)
-        # print('Name: {cluster_name} Memory: {mem_used}'.format(cluster_name = node['name'], mem_used = node['mem_used']))
-    
-    # headers = {'Content-type': 'application/json'}
-
-    # response = requests.get(url = api+get_queue ,auth=('mehul', 'mehul'), headers=headers)
-
-    # json_data = json.loads(response.text) 
-
-    # for queue in json_data:
-    #     # print('Queue: {q} and MessageCount: {mc}'.format(q=queue['name'], mc=queue['messages']))
-    #     update_metrics_dict(queue['name'] + str('(Queue Messages)'), queue['messages'], '')
-
+   
     '''
     Collected RMQ metrics
     '''
@@ -74,8 +64,8 @@ def collect_metrics():
             for list in range(len(metrics)-1):
                 metric = metrics[list]
                 state = metrics[list+1]
-            #print(service)
-            #print(metrics)
+                
+            # Sending the metrics to riemann ser
             send_to_riemann(service, metric, state)
 
 def make_request_to_rmq(endpoint):
