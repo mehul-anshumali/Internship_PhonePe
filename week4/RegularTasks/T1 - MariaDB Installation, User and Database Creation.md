@@ -6,49 +6,49 @@
   - **Update System**
 
     Ensure your system is updated and install software-properties-common package.
-    ```
+    ```bash
     sudo apt update && sudo apt upgrade
     sudo apt -y install software-properties-common
     ```
   - **Import MariaDB gpg key**
 
     Run the command below to add Repository Key to the system:
-    ```
+    ```bash
     sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
     ```
   - **Add MariaDB APT repository**
 
     After importation of repository GPG key, add the APT repository by running the following command:
-    ```
+    ```bash
     sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://archive.mariadb.org/mariadb-10.5.6/repo/ubuntu/ focal main'
     ```
   - **Install MariaDB Server on 20.04 Linux**
 
     The last step is the installation of MariaDB Server:
-    ```
+    ```bash
     sudo apt update
     sudo apt install mariadb-server mariadb-client
     ```
     Hit the **y** key to accept installation of MariaDB 10.5.6 on Ubuntu 20.04 Linux.
 
   - **Secure MariaDB Server on 20.04 Linux**
-    ```
+    ```bash
     sudo mysql_secure_installation
     ``` 
   - **Checking Status**
   
     The database service should be started automatically after installation.
-    ```
+    ```bash
     sudo systemctl status mysql
     ```
   - **Login to MariaDB Shell**
   
     Test login to **MariaDB** shell using mysql command:
-    ```
+    ```bash
     sudo mysql -u root -p
     ```
   - **Check version using the command**
-    ```
+    ```sql
     MariaDB [(none)]> SELECT VERSION();
     +-----------------------------------------+
     | VERSION() |
@@ -61,11 +61,11 @@
 - ## Create New MariaDB User
 
   To create a new MariaDB user, type the following command:
-  ```
+  ```sql
   CREATE USER 'mehul'@'%' IDENTIFIED BY 'your-password';
   ```
   Once you create user1, check its status by entering:
-  ```
+  ```sql
   MariaDB [(none)]> SELECT User FROM mysql.user;
   +-------------+
   | User        |
@@ -79,11 +79,11 @@
   ```
 - ## Create database named Nginx
   To create a database, type the following command:
-  ```
+  ```sql
   MariaDB [(none)]> CREATE DATABASE Nginx;
   ```
   To show the list of databases, type the following command:
-  ```
+  ```sql
   SHOW DATABASES;
   +--------------------+
   | Database           |
@@ -97,7 +97,7 @@
   ```
 - ## Restoring the SQL file in database Nginx
   To restore the any file inside the database, type the following command:
-  ```
+  ```bash
   sudo mysql -u root -p <database_name> < <filename.sql>
 
   sudo mysql -u root -p Nginx < ngnix_access_log.sql;
