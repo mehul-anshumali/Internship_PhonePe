@@ -1,5 +1,5 @@
 # Metrics such as disk usage/ram usage/HWM etc should have a threshold (80%) and should send a critical alert to riemann once the threshold is breached.
-- ## Script:- https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week8/Tasks/scripts/send_riemann.py
+- Script:- https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week8/Tasks/scripts/send_riemann.py
 - Define the function in script to change the state according to the usage-percentage of metrics. 
   ```python
   def find_state(metric_percent):
