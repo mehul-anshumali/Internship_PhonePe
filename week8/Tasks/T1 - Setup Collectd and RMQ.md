@@ -67,8 +67,6 @@
           CollectExchanges true
           CollectNodes true
           CollectQueues true
-          # FieldLength 1023
-          # HTTPTimeout 60
           VerbosityLevel "trace"
         </Module>
       </Plugin>
