@@ -4,10 +4,10 @@
  
     - highest requested host
     
-    ```
+    ```sql
     MariaDB [Nginx]> select distinct(substring_index(time,':',1)) as date, host, count(*) as times from ngnix_access_log group by date, host;
     ```
-    ```
+    ```sql
     +-------------+----------------------+-------+
     | date        | host                 | times |
     +-------------+----------------------+-------+
@@ -40,10 +40,10 @@
     - highest requested path (upto 2 subdirectories ex: /check/balance)
   
   - **Total requests per status code (Ex: count of requests returning 404/401/502/504/500/200)**
-    ```
+    ```sql
     MariaDB [Nginx]> select distinct(statusCode), count(*) as count from ngnix_access_log group by statusCode;
     ```
-    ```
+    ```sql
     +------------+-------+
     | statusCode | count |
     +------------+-------+
@@ -74,10 +74,10 @@
   - **Top requests**
     - top 5 requests by upstream_ip
     
-      ```
+      ```sql
       MariaDB [Nginx]> select distinct(upstream_ip_port), host,count(*) as count from ngnix_access_log group by upstream_ip_port order by count desc limit 5;
       ```
-      ```
+      ```sql
       +------------------+----------------------+-------+
       | upstream_ip_port | host                 | count |
       +------------------+----------------------+-------+
@@ -92,10 +92,10 @@
       
     - top 5 requests by host
       
-      ```
+      ```sql
       MariaDB [Nginx]> select distinct(host), path,count(*) as count from ngnix_access_log group by host order by count desc limit 5;
       ```
-      ```
+      ```sql
       +----------------------+---------------------------------------------------------+-------+
       | host                 | path                                                    | count |
       +----------------------+---------------------------------------------------------+-------+
@@ -110,10 +110,10 @@
       
     - top 5 requests by bodyBytesSent
       
-      ```
+      ```sql
       MariaDB [Nginx]> select distinct(bodyBytesSent),host ,path,count(*) as count from ngnix_access_log group by bodyBytesSent order by count desc limit 5;
       ```
-      ```
+      ```sql
       +---------------+------------------+-----------------------------------------------------+-------+
       | bodyBytesSent | host             | path                                                | count |
       +---------------+------------------+-----------------------------------------------------+-------+
@@ -127,10 +127,10 @@
       
     - top 5 requests by path (upto 2 subdirectories ex: /check/balance)
       
-      ```
+      ```sql
       MariaDB [Nginx]> select distinct(path),host,ip ,count(*) as count from ngnix_access_log group by path order by count desc limit 5;
       ```
-      ```
+      ```sql
       +-------------------------------------+------------------+----------------+-------+
       | path                                | host             | ip             | count |
       +-------------------------------------+------------------+----------------+-------+
@@ -145,10 +145,10 @@
       
     - top 5 requests with the highest response time
       
-      ```
+      ```sql
       MariaDB [Nginx]> select distinct(responseTime), host as requested_by, ip as from_ip from ngnix_access_log order by CAST(responseTime as decimal(5,3)) desc limit 5;
       ```
-      ```
+      ```sql
       +--------------+------------------+-----------------+
       | responseTime | requested_by     | from_ip         |
       +--------------+------------------+-----------------+
@@ -163,10 +163,10 @@
       
     - get top 5 requests returning 200/5xx/4xx per host
       
-      ```
+      ```sql
       MariaDB [Nginx]> select distinct(host), statusCode , count(*) as count from ngnix_access_log group by host order by count desc;
       ```
-      ```
+      ```sql
       +----------------------+------------+-------+
       | host                 | statusCode | count |
       +----------------------+------------+-------+
@@ -183,10 +183,10 @@
   - **Get all request for the last 10 minutes**
   
   - **Get all the requests taking more than 2/5/10 secs to respond.**
-   ```
+   ```sql
    MariaDB [Nginx]> select distinct(responseTime), host as requested_by, ip as from_ip from ngnix_access_log where CAST(responseTime as decimal(5,3)) > 2 order by CAST(responseTime as decimal(5,3)) asc limit 10;
    ```
-   ```
+   ```sql
    +--------------+----------------------+-----------------+
    | responseTime | requested_by         | from_ip         |
    +--------------+----------------------+-----------------+
@@ -204,10 +204,10 @@
    ```
   
   - **Get all the requests in the specified timestamp (Ex: from 06/Mar/2021:04:48 to 06/Mar/2021:04:58)**
-   ```
+   ```sql
    MariaDB [Nginx]> select host, ip, path, time,count(*) as count from ngnix_access_log where time between '06/Mar/2021:00:00:00' and '06/Mar/2021:23:55:55' group by host order by count desc;
    ```
-   ```
+   ```sql
    +----------------------+---------------+---------------------------------------------------------+----------------------------+-------+
    | host                 | ip            | path                                                    | time                       | count |
    +----------------------+---------------+---------------------------------------------------------+----------------------------+-------+
