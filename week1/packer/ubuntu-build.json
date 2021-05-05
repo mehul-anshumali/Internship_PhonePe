@@ -30,9 +30,7 @@
     {
       "inline": [
         "sudo cat /etc/passwd",
-        "echo Hello World! I am new to packer....",
-        "echo Wohooo I am back"
-        
+        "echo Hello World! I am new to packer...."
       ],
       "type": "shell"
     }
