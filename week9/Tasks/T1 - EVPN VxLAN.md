@@ -35,7 +35,8 @@
   $ net add vxlan vni-1014 bridge learning off
   $ net add vxlan vni-1014 mtu 9152
   $ net commit
-
+  
+  $ net add bgp ipv4 unicast network 10.10.1.11/32
   $ net add bgp evpn neighbor 172.10.0.1 activate
   $ net add bgp evpn advertise-all-vni
   $ net commit
@@ -56,7 +57,8 @@
   $ net add vxlan vni-1014 bridge learning off
   $ net add vxlan vni-1014 mtu 9152
   $ net commit
-
+  
+  $ net add bgp ipv4 unicast network 10.10.1.12/32
   $ net add bgp evpn neighbor 172.10.0.5 activate
   $ net add bgp evpn advertise-all-vni
   $ net commit
@@ -77,7 +79,8 @@
   $ net add vxlan vni-1014 bridge learning off
   $ net add vxlan vni-1014 mtu 9152
   $ net commit
-
+  
+  $ net add bgp ipv4 unicast network 10.10.1.13/32
   $ net add bgp evpn neighbor 172.10.0.9 activate
   $ net add bgp evpn advertise-all-vni
   $ net commit
