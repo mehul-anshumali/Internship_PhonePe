@@ -26,7 +26,7 @@
   
   $ net add bridge bridge ports swp2
   $ net add interface swp2 bridge access 14
-  $ net add vlan 100 ip address 10.3.1.11
+  $ net add vlan 100 ip address 10.3.1.11/24
   $ net commit
 
   $ net add vxlan vni-1014 vxlan id 1014
@@ -47,7 +47,7 @@
   
   $ net add bridge bridge ports swp2
   $ net add interface swp2 bridge access 14
-  $ net add vlan 100 ip address 10.3.1.11
+  $ net add vlan 100 ip address 10.3.1.11/24
   $ net commit
 
   $ net add vxlan vni-1014 vxlan id 1014
@@ -68,7 +68,7 @@
   
   $ net add bridge bridge ports swp2
   $ net add interface swp2 bridge access 14
-  $ net add vlan 100 ip address 10.3.1.11
+  $ net add vlan 100 ip address 10.3.1.11/24
   $ net commit
 
   $ net add vxlan vni-1014 vxlan id 1014
