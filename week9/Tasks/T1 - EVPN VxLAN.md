@@ -88,7 +88,13 @@
   $ net show bgp evpn route 
   $ net show evpn mac vni 1014
   ```
-
+- Now, try to ping the between the Hosts.
+  ```
+  Host1:
+  $ ping 10.3.1.2
+  $ ping 10.3.1.3
+  ```
+ 
 
 
 
