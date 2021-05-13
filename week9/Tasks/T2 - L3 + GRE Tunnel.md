@@ -114,3 +114,26 @@
       H1# show ip route 
       ```
     - #### Ping and check the connectivity between the `H1`, `H2`, and `H3`.
+    
+- ## GRE Tunnel:
+  - Enable the IP Forwarding:
+    - Edit the file ```/etc/sysctl.conf```
+      ```
+      net.ipv4.ip_forward=1
+      ```
+    - Save and ```sudo sysctl -p```
+  - On H1:
+    ```bash
+    sudo ip tunnel add gre1 mode gre local 10.10.1.1 remote 10.10.1.3 ttl 255
+    sudo ip addr add 192.168.100.1 dev gre1
+    sudo ip link set gre1 up
+    ```
+  - On H2: 
+    ```bash
+    sudo ip tunnel add gre1 mode gre local 10.10.1.3 remote 10.10.1.1 ttl 255
+    sudo ip addr add 192.168.100.2 dev gre1
+    sudo ip link set gre1 up
+    ```
+ - **Testing**:
+   ```Ping between 192.168.100.1 and 100.2```
+   
