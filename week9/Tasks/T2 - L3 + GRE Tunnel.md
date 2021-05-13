@@ -128,7 +128,7 @@
     sudo ip addr add 192.168.100.1 dev gre1
     sudo ip link set gre1 up
     ```
-  - On H2: 
+  - On H3: 
     ```bash
     sudo ip tunnel add gre1 mode gre local 10.10.1.3 remote 10.10.1.1 ttl 255
     sudo ip addr add 192.168.100.2 dev gre1
