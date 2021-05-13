@@ -5,9 +5,9 @@
     Host | Interface | IP/mask | Adapter No. - Name
     :--: | :--: | :--: | :--:
     R4 | `swp1`<br> `swp2` <br> `swp3` | `172.10.0.1/30` <br> `172.10.0.5/30` <br> `172.10.0.9/30` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - intnet-2`, <br> `Adapter 4 - intnet-3`
-    R1 | `swp1` <br> `lo` | `172.10.0.2/30` <br> `10.10.1.11` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - h1`
-    R2 | `swp1` <br> `lo` | `172.10.0.6/30` <br> `10.10.1.12` | `Adapter 2 - intnet-2`, <br> `Adapter 3 - h2`
-    R3 | `swp1` <br> `lo` | `172.10.0.10/30` <br> `10.10.1.13` | `Adapter 2 - intnet-3`, <br> `Adapter 3 - h3`
+    R1 | `swp1` <br> `lo` | `172.10.0.2/30` <br> `10.10.1.11/32` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - h1`
+    R2 | `swp1` <br> `lo` | `172.10.0.6/30` <br> `10.10.1.12/32` | `Adapter 2 - intnet-2`, <br> `Adapter 3 - h2`
+    R3 | `swp1` <br> `lo` | `172.10.0.10/30` <br> `10.10.1.13/32` | `Adapter 2 - intnet-3`, <br> `Adapter 3 - h3`
     H1 | `enp0s8` | `10.3.1.1/24` <br> `Gateway: 10.3.1.11` | `Adapter 2 - h1`
     H2 | `enp0s8` | `10.3.1.2/24` <br> `Gateway: 10.3.1.11` | `Adapter 2 - h2`
     H3 | `enp0s8` | `10.3.1.3/24` <br> `Gateway: 10.3.1.11` | `Adapter 2 - h3`
@@ -21,7 +21,7 @@
   ```
 - ### On `R1`:
   ```nclu
-  $ net add loopback lo ip address 10.10.1.11
+  $ net add loopback lo ip address 10.10.1.11/32
   $ net commit
   
   $ net add bridge bridge ports swp2
@@ -42,7 +42,7 @@
   ```
 - ### On `R2`:
   ```nclu
-  $ net add loopback lo ip address 10.10.1.12
+  $ net add loopback lo ip address 10.10.1.12/32
   $ net commit
   
   $ net add bridge bridge ports swp2
@@ -63,7 +63,7 @@
   ```
 - ### On `R3`:
   ```nclu
-  $ net add loopback lo ip address 10.10.1.13
+  $ net add loopback lo ip address 10.10.1.13/32
   $ net commit
   
   $ net add bridge bridge ports swp2
