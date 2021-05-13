@@ -33,7 +33,7 @@
     $ net commit
     ```
   - ### On `R1`:
-    - Assiging `IP's` to interfaces: 
+    - Assiging `IP's` to interface: 
     ```nclu
     $ net add interface swp1 ip address 172.10.0.2/30
     $ net commit
@@ -46,7 +46,7 @@
     $ net commit
     ```
   - ### On `R2`:
-    - Assiging `IP's` to interfaces: 
+    - Assiging `IP's` to interface: 
     ```nclu
     $ net add interface swp1 ip address 172.10.0.6/30
     $ net commit
@@ -59,7 +59,7 @@
     $ net commit
     ```
   - ### On `R3`:
-    - Assiging `IP's` to interfaces: 
+    - Assiging `IP's` to interface: 
     ```nclu
     $ net add interface swp1 ip address 172.10.0.10/30
     $ net commit
