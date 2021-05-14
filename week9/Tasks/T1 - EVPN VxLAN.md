@@ -1,7 +1,19 @@
 # EVPN / Vxlan
+- Create L2 connectivity between host 1, host 2, host 3
+- Test case: 
+  ```
+  Host 1 IP: 10.3.1.1/24
+  Host 2 IP: 10.3.1.2/24
+  Host 3 IP: 10.3.1.3/24
+  ```
+All the hosts should be able to ping each other
+(Hint / Tip: Hosts will not form BGP with R1, R2, and R3)
+
 ![image](https://user-images.githubusercontent.com/44754882/118077052-fdf20c00-b3d0-11eb-82de-39b42769c40f.png)
 
-- ### VM's configuration:
+<hr> 
+
+- ## VM's configuration:
     Host | Interface | IP/mask | Adapter No. - Name
     :--: | :--: | :--: | :--:
     R4 | `swp1`<br> `swp2` <br> `swp3` | `172.10.0.1/30` <br> `172.10.0.5/30` <br> `172.10.0.9/30` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - intnet-2`, <br> `Adapter 4 - intnet-3`
