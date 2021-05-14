@@ -5,6 +5,17 @@
   Host 2: 10.10.1.2/32
   Host 3: 10.10.1.3/32
   ```
+  ```
+  Verify the ping between each hosts
+  ```
+- Setup a GRE tunnel between Host 1 and Host 3
+- Set `192.168.100.1/24` on Host 1 tunnel interface
+- Set `192.168.100.2/24` on Host 3 Tunnel interface
+
+  ```
+  Test the ping between 192.168.100.1 and 100.2
+  ```
+
 ![image](https://user-images.githubusercontent.com/44754882/118077605-0dbe2000-b3d2-11eb-9e23-1a6280768d8f.png)
 <hr>
 
