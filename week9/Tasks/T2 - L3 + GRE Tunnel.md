@@ -1,7 +1,14 @@
 # L3 + GRE Tunnel
+- Create L3 connectivity between all 3 Hosts, Each host will form BGP with its corresponding router and advertise its own loopback ip
+  ```
+  Host 1: 10.10.1.1/32
+  Host 2: 10.10.1.2/32
+  Host 3: 10.10.1.3/32
+  ```
 ![image](https://user-images.githubusercontent.com/44754882/118077605-0dbe2000-b3d2-11eb-9e23-1a6280768d8f.png)
+<hr>
 
-- ### VM's configuration:
+- ## VM's configuration:
     Host | Interface | IP/mask | Adapter No. - Name
     :--: | :--: | :--: | :--:
     R4 | `swp1`<br> `swp2` <br> `swp3` | `172.10.0.1/30` <br> `172.10.0.5/30` <br> `172.10.0.9/30` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - intnet-2`, <br> `Adapter 4 - intnet-3`
@@ -12,7 +19,7 @@
     H2 | `enp0s8` <br> `enp0s9` | `10.10.1.2/32` <br> `172.10.0.18/30` | `Adapter 2 - intnet`, <br> `Adapter 3 - h2`
     H3 | `enp0s8` <br> `enp0s9` | `10.10.1.3/32` <br> `172.10.0.22/30` | `Adapter 2 - intnet`, <br> `Adapter 3 - h3`
     
-- ### HOST 1, 2, and 3 with FRR:
+- ## HOST 1, 2, and 3 with FRR:
   - Installing FRR: 
   ```bash
   $ sudo curl -s https://deb.frrouting.org/frr/keys.asc | sudo apt-key add -
