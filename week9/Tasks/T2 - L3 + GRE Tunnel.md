@@ -16,7 +16,8 @@
   Test the ping between 192.168.100.1 and 100.2
   ```
 
-![image](https://user-images.githubusercontent.com/44754882/118077605-0dbe2000-b3d2-11eb-9e23-1a6280768d8f.png)
+![image](https://user-images.githubusercontent.com/44754882/118436100-cb605000-b6fd-11eb-86fb-7c2491b31e48.png)
+
 <hr>
 
 - ## VM's configuration:
@@ -26,9 +27,9 @@
     R1 | `swp1` <br> `swp2` | `172.10.0.2/30` <br> `172.10.0.13/30` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - h1`
     R2 | `swp1` <br> `swp2` | `172.10.0.6/30` <br> `172.10.0.17/30` | `Adapter 2 - intnet-2`, <br> `Adapter 3 - h2`
     R3 | `swp1` <br> `swp2` | `172.10.0.10/30` <br> `172.10.0.21/30` | `Adapter 2 - intnet-3`, <br> `Adapter 3 - h3`   
-    H1 | `enp0s8` <br> `enp0s9` | `10.10.1.1/32` <br> `172.10.0.14/30` | `Adapter 2 - intnet`, <br> `Adapter 3 - h1`
-    H2 | `enp0s8` <br> `enp0s9` | `10.10.1.2/32` <br> `172.10.0.18/30` | `Adapter 2 - intnet`, <br> `Adapter 3 - h2`
-    H3 | `enp0s8` <br> `enp0s9` | `10.10.1.3/32` <br> `172.10.0.22/30` | `Adapter 2 - intnet`, <br> `Adapter 3 - h3`
+    H1 | `lo` <br> `enp0s9` | `10.10.1.1/32` <br> `172.10.0.14/30` | <br> `Adapter 3 - h1`
+    H2 | `lo` <br> `enp0s9` | `10.10.1.2/32` <br> `172.10.0.18/30` | <br> `Adapter 3 - h2`
+    H3 | `lo` <br> `enp0s9` | `10.10.1.3/32` <br> `172.10.0.22/30` | <br> `Adapter 3 - h3`
     
 - ## HOST 1, 2, and 3 with FRR:
   - Installing FRR: 
