@@ -1,4 +1,6 @@
 # R1, R2, R3 will form BGP with R4.
+![image](https://user-images.githubusercontent.com/44754882/118435456-a0293100-b6fc-11eb-9984-1fb7d47a42c9.png)
+
   - Change the hostname of Cumulus VX by using the command:
     ```nclu
     $ net add hostname R1
