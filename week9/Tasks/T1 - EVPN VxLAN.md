@@ -20,9 +20,9 @@ All the hosts should be able to ping each other
     R1 | `swp1` <br> `lo` | `172.10.0.2/30` <br> `10.10.1.11/32` | `Adapter 2 - intnet-1`, <br> `Adapter 3 - h1`
     R2 | `swp1` <br> `lo` | `172.10.0.6/30` <br> `10.10.1.12/32` | `Adapter 2 - intnet-2`, <br> `Adapter 3 - h2`
     R3 | `swp1` <br> `lo` | `172.10.0.10/30` <br> `10.10.1.13/32` | `Adapter 2 - intnet-3`, <br> `Adapter 3 - h3`
-    H1 | `enp0s8` | `10.3.1.1/24` <br> `Gateway: 10.3.1.11` | `Adapter 2 - h1`
-    H2 | `enp0s8` | `10.3.1.2/24` <br> `Gateway: 10.3.1.11` | `Adapter 2 - h2`
-    H3 | `enp0s8` | `10.3.1.3/24` <br> `Gateway: 10.3.1.11` | `Adapter 2 - h3`
+    H1 | `enp0s8` | `10.3.1.1/24` | `Adapter 2 - h1`
+    H2 | `enp0s8` | `10.3.1.2/24` | `Adapter 2 - h2`
+    H3 | `enp0s8` | `10.3.1.3/24` | `Adapter 2 - h3`
 
 - ### On `R4`:
   ```nclu
@@ -38,14 +38,12 @@ All the hosts should be able to ping each other
   
   $ net add bridge bridge ports swp2
   $ net add interface swp2 bridge access 14
-  $ net add vlan 100 ip address 10.3.1.11/24
   $ net commit
 
   $ net add vxlan vni-1014 vxlan id 1014
   $ net add vxlan vni-1014 bridge access 14
   $ net add vxlan vni-1014 vxlan local-tunnelip 10.10.1.11
   $ net add vxlan vni-1014 bridge learning off
-  $ net add vxlan vni-1014 mtu 9152
   $ net commit
   
   $ net add bgp ipv4 unicast network 10.10.1.11/32
@@ -60,14 +58,12 @@ All the hosts should be able to ping each other
   
   $ net add bridge bridge ports swp2
   $ net add interface swp2 bridge access 14
-  $ net add vlan 100 ip address 10.3.1.11/24
   $ net commit
 
   $ net add vxlan vni-1014 vxlan id 1014
   $ net add vxlan vni-1014 bridge access 14
   $ net add vxlan vni-1014 vxlan local-tunnelip 10.10.1.12
   $ net add vxlan vni-1014 bridge learning off
-  $ net add vxlan vni-1014 mtu 9152
   $ net commit
   
   $ net add bgp ipv4 unicast network 10.10.1.12/32
@@ -82,14 +78,12 @@ All the hosts should be able to ping each other
   
   $ net add bridge bridge ports swp2
   $ net add interface swp2 bridge access 14
-  $ net add vlan 100 ip address 10.3.1.11/24
   $ net commit
 
   $ net add vxlan vni-1014 vxlan id 1014
   $ net add vxlan vni-1014 bridge access 14
   $ net add vxlan vni-1014 vxlan local-tunnelip 10.10.1.13
   $ net add vxlan vni-1014 bridge learning off
-  $ net add vxlan vni-1014 mtu 9152
   $ net commit
   
   $ net add bgp ipv4 unicast network 10.10.1.13/32
