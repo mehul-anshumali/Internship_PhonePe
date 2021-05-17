@@ -69,7 +69,7 @@
     ```
     - Forming `BGP`:
     ```nclu
-    $ net add bgp neighbor 172.10.0.18 remote-as 1
+    $ net add bgp neighbor 172.10.0.18 remote-as 2
     $ net del bgp ipv4 unicast network 172.10.0.4/30
     $ net add bgp redistribute connected
     $ net commit
@@ -82,7 +82,7 @@
     ```
     - Forming `BGP`:
     ```nclu
-    $ net add bgp neighbor 172.10.0.22 remote-as 1
+    $ net add bgp neighbor 172.10.0.22 remote-as 3
     $ net del bgp ipv4 unicast network 172.10.0.8/30
     $ net add bgp redistribute connected
     $ net commit
@@ -91,7 +91,7 @@
     ```
     $ sudo vtysh
     ```
-    ```
+    ```vtysh
     H1# configure terminal 
     H1(config)# router bgp 1
     H1(config-router)# neighbor 172.10.0.13 remote-as 1
@@ -103,7 +103,7 @@
     ```
     $ sudo vtysh
     ```
-    ```
+    ```vtysh
     H2# configure terminal 
     H2(config)# router bgp 2
     H2(config-router)# neighbor 172.10.0.17 remote-as 2
@@ -115,7 +115,7 @@
     ```
     $ sudo vtysh
     ```
-    ```
+    ```vtysh
     H3# configure terminal 
     H3(config)# router bgp 3
     H3(config-router)# neighbor 172.10.0.21 remote-as 3
