@@ -9,7 +9,7 @@
 All the hosts should be able to ping each other
 (Hint / Tip: Hosts will not form BGP with R1, R2, and R3)
 
-![image](https://user-images.githubusercontent.com/44754882/118077052-fdf20c00-b3d0-11eb-82de-39b42769c40f.png)
+![image](https://user-images.githubusercontent.com/44754882/118435733-22195a00-b6fd-11eb-8408-236e20cd9e68.png)
 
 <hr> 
 
