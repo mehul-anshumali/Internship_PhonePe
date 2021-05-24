@@ -32,7 +32,7 @@ All the hosts should be able to ping each other
   $ net commit
   ```
 - ### On `R1`:
-  ```console
+  ```nclu
   $ net add loopback lo ip address 10.10.1.11/32
   $ net commit
   
