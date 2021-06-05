@@ -1,0 +1,25 @@
+---
+- name: Create my user with all privileges
+  mysql_user:
+    login_user: "{{ login_user }}"
+    login_password: "{{ login_password }}"
+    name: newuser
+    host: '%'
+    password: mehul
+    priv: "*.*:ALL"
+    state: present
+    login_unix_socket: "{{ login_unix_socket }}"
+  when: ansible_enp0s8.ipv4.address == groups['master_node'][0]
+
+- name: Create monitoring user with only read privileges
+  mysql_user:
+    login_user: "{{ login_user }}"
+    login_password: "{{ login_password }}"
+    name: monitoring
+    host: '%'
+    password: mehul
+    priv: "*.*:SELECT"
+    state: present
+    login_unix_socket: "{{ login_unix_socket }}"
+  when: ansible_enp0s8.ipv4.address == groups['master_node'][0]
+
