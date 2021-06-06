@@ -41,60 +41,60 @@
   $ sudo vtysh
   ```
   ```vtysh
-  R1# configure terminal 
-  R1(config)# ip prefix-list ROUTE permit any
-  R1(config)# router bgp 1
-  R1(config-router)# neighbor 172.10.0.1 remote-as 10
-  R1(config-router)# address-family ipv4 unicast 
-  R1(config-router-af)# network 10.10.1.11/32
-  R1(config-router-af)# neighbor 172.10.0.1 prefix-list ROUTE in
-  R1(config-router-af)# neighbor 172.10.0.1 prefix-list ROUTE out
-  R1(config-router-af)# end
+  VM1# configure terminal 
+  VM1(config)# ip prefix-list ROUTE permit any
+  VM1(config)# router bgp 1
+  VM1(config-router)# neighbor 172.10.0.1 remote-as 10
+  VM1(config-router)# address-family ipv4 unicast 
+  VM1(config-router-af)# network 10.10.1.11/32
+  VM1(config-router-af)# neighbor 172.10.0.1 prefix-list ROUTE in
+  VM1(config-router-af)# neighbor 172.10.0.1 prefix-list ROUTE out
+  VM1(config-router-af)# end
   ```
 - ## On `VM2`:
   ```bash
   $ sudo vtysh
   ```
   ```vtysh
-  R1# configure terminal 
-  R1(config)# ip prefix-list ROUTE permit any
-  R1(config)# router bgp 2
-  R1(config-router)# neighbor 172.10.0.5 remote-as 10
-  R1(config-router)# address-family ipv4 unicast 
-  R1(config-router-af)# network 10.10.1.12/32
-  R1(config-router-af)# neighbor 172.10.0.5 prefix-list ROUTE in
-  R1(config-router-af)# neighbor 172.10.0.5 prefix-list ROUTE out
-  R1(config-router-af)# end
+  VM2# configure terminal 
+  VM2(config)# ip prefix-list ROUTE permit any
+  VM2(config)# router bgp 2
+  VM2(config-router)# neighbor 172.10.0.5 remote-as 10
+  VM2(config-router)# address-family ipv4 unicast 
+  VM2(config-router-af)# network 10.10.1.12/32
+  VM2(config-router-af)# neighbor 172.10.0.5 prefix-list ROUTE in
+  VM2(config-router-af)# neighbor 172.10.0.5 prefix-list ROUTE out
+  VM2(config-router-af)# end
   ```
 - ## On `VM3`:
   ```bash
   $ sudo vtysh
   ```
   ```vtysh
-  R1# configure terminal 
-  R1(config)# ip prefix-list ROUTE permit any
-  R1(config)# router bgp 3
-  R1(config-router)# neighbor 172.10.0.9 remote-as 10
-  R1(config-router)# address-family ipv4 unicast 
-  R1(config-router-af)# network 10.10.1.13/32
-  R1(config-router-af)# neighbor 172.10.0.9 prefix-list ROUTE in
-  R1(config-router-af)# neighbor 172.10.0.9 prefix-list ROUTE out
-  R1(config-router-af)# end
+  VM3# configure terminal 
+  VM3(config)# ip prefix-list ROUTE permit any
+  VM3(config)# router bgp 3
+  VM3(config-router)# neighbor 172.10.0.9 remote-as 10
+  VM3(config-router)# address-family ipv4 unicast 
+  VM3(config-router-af)# network 10.10.1.13/32
+  VM3(config-router-af)# neighbor 172.10.0.9 prefix-list ROUTE in
+  VM3(config-router-af)# neighbor 172.10.0.9 prefix-list ROUTE out
+  VM3(config-router-af)# end
   ```
 - ## On `VM4`:
   ```bash
   $ sudo vtysh
   ```
   ```vtysh
-  R1# configure terminal 
-  R1(config)# ip prefix-list ROUTE permit any
-  R1(config)# router bgp 4
-  R1(config-router)# neighbor 172.10.0.13 remote-as 10
-  R1(config-router)# address-family ipv4 unicast 
-  R1(config-router-af)# network 10.10.1.14/32
-  R1(config-router-af)# neighbor 172.10.0.13 prefix-list ROUTE in
-  R1(config-router-af)# neighbor 172.10.0.13 prefix-list ROUTE out
-  R1(config-router-af)# end
+  VM4# configure terminal 
+  VM4(config)# ip prefix-list ROUTE permit any
+  VM4(config)# router bgp 4
+  VM4(config-router)# neighbor 172.10.0.13 remote-as 10
+  VM4(config-router)# address-family ipv4 unicast 
+  VM4(config-router-af)# network 10.10.1.14/32
+  VM4(config-router-af)# neighbor 172.10.0.13 prefix-list ROUTE in
+  VM4(config-router-af)# neighbor 172.10.0.13 prefix-list ROUTE out
+  VM4(config-router-af)# end
   ```
     
     
