@@ -1,0 +1,7 @@
+---
+- name: MariaDB PlayBook
+  hosts: week5
+  become: true
+  become_method: sudo
+  roles:
+  - ansible_mariadb
