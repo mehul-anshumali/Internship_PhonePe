@@ -15,6 +15,8 @@
 
 * <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week7"> Week 7 </a></h3>
 
-* <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week8"> Week 8 </a></h3>
+* <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week8-9"> Week 8 and Week 9 </a></h3>
 
-* <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week9"> Week 9 </a></h3>
+* <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week10-11"> Week 10 and Week 11 </a></h3>
+
+* <h3><a href="https://github.com/mehul-anshumali/Internship_PhonePe/tree/main/week12"> Week 12 </a></h3>
