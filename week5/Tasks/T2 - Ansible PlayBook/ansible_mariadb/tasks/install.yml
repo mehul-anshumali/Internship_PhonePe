@@ -12,8 +12,6 @@
       - python3-pymysql
       - mariadb-backup
     state: present
-    update_cache: yes
-    cache_valid_time: 3600
 
 - name: Import MariaDB key
   apt_key: 
