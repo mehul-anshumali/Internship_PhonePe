@@ -32,9 +32,3 @@ This week would conccentrate on DB Basics.
 
 8. Create partitioning on this table using the time values, the table should have weekly partitions.
 9. Truncate the partitions from week 21 to 25;
-
-
-**Once all the above tasks are complete you can start the below ones.**
-
-1. Configure 3 node Galera cluster on a single VM.
-2. Design a database of a college in or above 3rd normalized form. Main entities should be Students, lecturers, courses and subjects.
