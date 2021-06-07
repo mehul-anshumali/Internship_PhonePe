@@ -20,6 +20,12 @@
           }
         ]
       }
+    },
+    "traefik.http.routers.router0.rule": "Host(`192.168.100.242:80`)"
+
+    "labels":{
+        "traefik.enable": "true",
+        "traefik.http.routers.webserver.rule": "Host(`192.168.67.75:80`)",
     }
   }
   ```
