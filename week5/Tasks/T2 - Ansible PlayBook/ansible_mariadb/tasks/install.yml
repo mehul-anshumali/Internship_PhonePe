@@ -3,7 +3,7 @@
 - name: Update package lists
   apt:
     update_cache: yes
-
+    cache_valid_time: 86400 
 - name: Install pre-reqs
   apt:
     name:
@@ -12,6 +12,7 @@
       - mariadb-backup
     state: present
     update_cache: yes
+    cache_valid_time: 86400
 
 - name: Import MariaDB key
   apt_key: 
