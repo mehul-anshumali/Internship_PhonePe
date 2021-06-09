@@ -9,9 +9,11 @@
 
 - include_tasks: cluster.yml
 
-- include_tasks: slave.yml
+#- include_tasks: slave.yml
+#  when: demote
+- include_tasks: slave_new.yml
   when: demote
-  
+ 
 - include_tasks: purge.yml
   when: purge_cluster
 
