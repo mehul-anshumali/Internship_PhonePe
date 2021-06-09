@@ -26,7 +26,6 @@
       ```bash
       sudo apt-get --fix-broken install
       ```
-<<<<<<< HEAD
   - ### Configuration for `mesos-master`:
     - Add `1` to the quorom file:
       ```bash
@@ -41,8 +40,6 @@
       ```
       echo manual | sudo tee /etc/init.d/mesos-slave.override
       ```
-=======
->>>>>>> 3e2f576fecbf717404f1bccd71e3443a4cd74c8d
   - ### Install Marathon:
     - Add repo key: 
       ```bash
@@ -59,10 +56,6 @@
       ```
       sudo apt-get install marathon
       ```
-<<<<<<< HEAD
-
-
-=======
   - ### Install Zookeeper:
     ```
     sudo apt-get install zookeeper
@@ -230,4 +223,4 @@
       ```
 
   - Check docker **processes** to verify that container is running usinf `docker ps`, and if running successfully, verify the setup by accessing `<BridgeIP>:80` or `<BridgeIP>:443` for checking the traefik **dashboard**.
->>>>>>> 3e2f576fecbf717404f1bccd71e3443a4cd74c8d
+
