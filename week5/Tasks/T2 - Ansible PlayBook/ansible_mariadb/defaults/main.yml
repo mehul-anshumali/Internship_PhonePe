@@ -7,5 +7,5 @@ login_password: root
 mysql_remove_test_database: true
 mysql_remove_anonymous_users: true
 mysql_secure_installation: true
-demote: true
+demote: false
 purge_cluster: false

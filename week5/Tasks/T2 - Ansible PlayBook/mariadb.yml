@@ -4,4 +4,6 @@
   become: true
   become_method: sudo
   roles:
-  - ansible_mariadb
+#  - ansible_mariadb
+#  - /home/mehul/Internship_PhonePe/week5/Tasks/T2 - Ansible PlayBook
+  - /home/mehul/Internship_PhonePe/week5/Tasks/T2 - Ansible PlayBook/ansible_mariadb
