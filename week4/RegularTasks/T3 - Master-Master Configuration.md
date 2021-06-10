@@ -1,5 +1,9 @@
 # Convert this setup into Master Master replication b/w both the VMs.
 - ## Configuration on the Slave server:
+  - Uncomment below line in `/etc/mysql/mariadb.conf.d/50-server.cnf`:
+    ```
+    log_bin = /var/log/mysql/mysql-bin.log
+    ```
   - First, log in to MariaDB shell with the following command:
     ```
     sudo mysql -u root -p
@@ -37,6 +41,7 @@
  
 - ## Configuration on the Master server:
   - Log in to MariaDB shell with the following command:
+    
     ```
     sudo mysql -u root -p
     ```
