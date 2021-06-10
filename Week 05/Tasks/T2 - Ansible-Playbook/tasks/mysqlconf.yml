@@ -1,0 +1,14 @@
+---
+# Copy my.cnf file to all nodes
+- name: Copy my.cnf file
+  template:
+      src: my.cnf.j2
+      dest: /etc/mysql/my.cnf
+      owner: root
+      group: root
+
+- name: Restart MariaDB
+  service:
+     name: mariadb
+     state: restarted
+ 
