@@ -6,7 +6,7 @@
   ```
 - ## Configure First Server (VM1)
   - Create a Galera configuration file with the following command:
-    ```
+    ```bash
     sudo nano /etc/mysql/conf.d/galera.cnf
     ```
     - Add the following lines:
@@ -38,7 +38,7 @@
 
 - ## Configure Second Server (VM2)
   - Create a Galera configuration file with the following command:
-    ```
+    ```bash
     sudo nano /etc/mysql/conf.d/galera.cnf
     ```
     - Add the following lines:
@@ -71,21 +71,21 @@
 - ## Initialize the Galera Cluster
   - Before starting the cluster, you will need to stop the MariaDB service on all servers.
   - Run the following command to stop the MariaDB service on all servers.
-    ```
+    ```bash
     sudo systemctl stop mariadb
     ```
   - Next, initialize the cluster in the first node with the following command:
-    ```
+    ```bash
     galera_new_cluster
     ```
   - The above command will start the cluster and add node1 to the cluster.
   - You can check it with the following command:
-    ```
+    ```bash
     sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
     Enter password:
     ```
   - Provide your root password and hit Enter. You should see the following output:
-    ```
+    ```sql
     +--------------------+-------+
     | Variable_name      | Value |
     +--------------------+-------+
@@ -93,16 +93,16 @@
     +--------------------+-------+
     ```
   - Next, go to the second server and start the MariaDB service:
-    ```
+    ```bash
     sudo systemctl start mariadb
     ```
   - Next, verify your cluster size with the following command:
-    ```
+    ```bash
     sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
     Enter password:
     ```
   - Provide your root password and hit Enter. You should see that the second server has joined the cluster.
-    ```
+    ```sql
     +--------------------+-------+
     | Variable_name      | Value |
     +--------------------+-------+
@@ -117,7 +117,7 @@
     ```
   - To do this create a new VM and install MariaDB in it.
   - Create a Galera configuration file with the following command:
-    ```
+    ```bash
     sudo nano /etc/mysql/conf.d/galera.cnf
     ```
     - Add the following lines:
@@ -147,16 +147,16 @@
       ```
     - Save and close the file when you are finished.
   - Restart the MariaDB service.
-    ```
+    ```bash
     sudo systemctl restart mariadb
     ```
   - Next, verify your cluster size with the following command:
-    ```
+    ```bash
     sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
     Enter password:
     ```
   - Provide your root password and hit Enter. You should see that the third server has joined the cluster.
-    ```
+    ```sql
     +--------------------+-------+
     | Variable_name      | Value |
     +--------------------+-------+
