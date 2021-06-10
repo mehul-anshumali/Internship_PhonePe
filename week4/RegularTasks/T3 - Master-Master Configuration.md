@@ -3,6 +3,7 @@
   - Uncomment below line in `/etc/mysql/mariadb.conf.d/50-server.cnf`:
     ```
     log_bin = /var/log/mysql/mysql-bin.log
+    log_bin_index =/var/log/mysql/mysql-bin.log.index
     ```
   - Restart the `mariadb.service`.
   - First, log in to MariaDB shell with the following command:
