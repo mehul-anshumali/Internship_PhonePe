@@ -1,0 +1,9 @@
+---
+- name: MariaDB PlayBook
+  hosts: week5
+  become: true
+  become_method: sudo
+  roles:
+#  - ansible_mariadb
+#  - /home/mehul/Internship_PhonePe/week5/Tasks/T2 - Ansible PlayBook
+  - /home/mehul/Internship_PhonePe/week5/Tasks/T2 - Ansible PlayBook/ansible_mariadb

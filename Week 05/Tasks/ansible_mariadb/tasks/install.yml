@@ -1,0 +1,35 @@
+---
+# MariaDB Installation and Configuration
+- name: Update package lists
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 
+- name: Install pre-reqs
+  apt:
+    name:
+      - software-properties-common
+      - python3-pymysql
+      - mariadb-backup
+    state: present
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Import MariaDB key
+  apt_key: 
+    url: https://mariadb.org/mariadb_release_signing_key.asc
+    state: present
+
+- name: Install MariaDB repository
+  apt_repository: 
+    repo: deb [arch=amd64] http://mariadb.mirror.globo.tech/repo/10.5/ubuntu focal main
+    state: present
+
+- name: Install mariadb-server and mariadb-client
+  apt:
+    update_cache: true
+    name:
+      - mariadb-server
+      - mariadb-client
+  notify: Restart MariaDB
+
+

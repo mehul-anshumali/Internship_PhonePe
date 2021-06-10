@@ -1,0 +1,20 @@
+---
+#tasks file for ansible_mariadb
+- include_tasks: install.yml
+
+- include_tasks: mysql_secure_installation.yml
+  when: mysql_secure_installation
+
+- include_tasks: mysqlconf.yml
+
+- include_tasks: cluster.yml
+
+#- include_tasks: slave.yml
+#  when: demote
+- include_tasks: slave_new.yml
+  when: demote
+ 
+- include_tasks: purge.yml
+  when: purge_cluster
+
+- include_tasks: users.yml
