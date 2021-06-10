@@ -1,4 +1,9 @@
 # Convert this setup into two nodes Galera clusters and then add another node to this cluster.
+- We are using `mariabackup` SST method, so first we have to create `mariabackup` user with privileges, create user in all VM's:
+  ```sql
+  CREATE USER 'mariabackup'@'localhost' IDENTIFIED BY 'mypassword';
+  GRANT RELOAD, PROCESS, LOCK TABLES, REPLICATION CLIENT ON *.* TO 'mariabackup'@'localhost';
+  ```
 - ## Configure First Server (VM1)
   - Create a Galera configuration file with the following command:
     ```
@@ -21,7 +26,9 @@
       wsrep_cluster_address="gcomm://192.168.1.1,192.168.1.2"
 
       # Galera Synchronization Configuration
-      wsrep_sst_method=rsync
+      wsrep_sst_method = mariabackup
+      wsrep_sst_auth = mariabackup:mypassword
+      wsrep_sst_donor=node2,
 
       # Galera Node Configuration
       wsrep_node_address="192.168.1.1"
@@ -51,7 +58,9 @@
       wsrep_cluster_address="gcomm://192.168.1.1,192.168.1.2"
 
       # Galera Synchronization Configuration
-      wsrep_sst_method=rsync
+      wsrep_sst_method = mariabackup
+      wsrep_sst_auth = mariabackup:mypassword
+      wsrep_sst_donor=node2,
 
       # Galera Node Configuration
       wsrep_node_address="192.168.1.2"
@@ -101,6 +110,11 @@
     +--------------------+-------+
     ```
 - ## Add another node
+  - Change below line in other two VM's:
+    ```
+    wsrep_cluster_address="gcomm://192.168.1.1,192.168.1.2,192.168.1.3"
+    wsrep_sst_donor=node3,
+    ```
   - To do this create a new VM and install MariaDB in it.
   - Create a Galera configuration file with the following command:
     ```
@@ -123,7 +137,9 @@
       wsrep_cluster_address="gcomm://192.168.1.1,192.168.1.2,192.168.1.3"
 
       # Galera Synchronization Configuration
-      wsrep_sst_method=rsync
+      wsrep_sst_method = mariabackup
+      wsrep_sst_auth = mariabackup:mypassword
+      wsrep_sst_donor=node3,
 
       # Galera Node Configuration
       wsrep_node_address="192.168.1.3"
