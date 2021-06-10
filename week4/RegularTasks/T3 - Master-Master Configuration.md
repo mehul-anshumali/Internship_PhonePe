@@ -4,6 +4,7 @@
     ```
     log_bin = /var/log/mysql/mysql-bin.log
     ```
+  - Restart the `mariadb.service`.
   - First, log in to MariaDB shell with the following command:
     ```
     sudo mysql -u root -p
