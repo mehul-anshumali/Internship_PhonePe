@@ -24,8 +24,8 @@
       Add the below lines,
       ```
       log_bin_index =/var/log/mysql/mysql-bin.log.index
-      relay_log = /var/log/mysql/mysql-relay-bin
-      relay_log_index = /var/log/mysql/mysql-relay-bin.index
+<!--       relay_log = /var/log/mysql/mysql-relay-bin -->
+<!--       relay_log_index = /var/log/mysql/mysql-relay-bin.index -->
       ```
   - Save and close the file when you are finished. Then, restart the MariaDB service to implement the changes:
     ```bash
@@ -87,7 +87,7 @@
 
         Add the below lines,
         ```
-        log_bin_index =/var/log/mysql/mysql-bin.log.index
+<!--         log_bin_index =/var/log/mysql/mysql-bin.log.index -->
         relay_log = /var/log/mysql/mysql-relay-bin
         relay_log_index = /var/log/mysql/mysql-relay-bin.index
         ```
