@@ -36,8 +36,46 @@
     ```
     
     - highest requested upstream_ip
+      ```sql
+      MariaDB [Nginx]> select distinct(substring_index(time,':',1)) as date, upstream_ip_port, count(*) as times from ngnix_access_log group by date, upstream_ip_port limit 10;
+      ```
+      ```sql
+      +-------------+------------------+-------+
+      | date        | upstream_ip_port | times |
+      +-------------+------------------+-------+
+      | 06/Mar/2021 | 10.77.22.10:443  |   426 |
+      | 06/Mar/2021 | 10.77.22.10:80   |   501 |
+      | 06/Mar/2021 | 10.77.22.10:8443 |   471 |
+      | 06/Mar/2021 | 10.77.22.11:443  |   501 |
+      | 06/Mar/2021 | 10.77.22.11:80   |   462 |
+      | 06/Mar/2021 | 10.77.22.11:8443 |   471 |
+      | 06/Mar/2021 | 10.77.22.12:443  |   480 |
+      | 06/Mar/2021 | 10.77.22.12:80   |   408 |
+      | 06/Mar/2021 | 10.77.22.12:8443 |   402 |
+      | 06/Mar/2021 | 10.77.22.13:443  |   447 |
+      +-------------+------------------+-------+
+      ```
     
     - highest requested path (upto 2 subdirectories ex: /check/balance)
+      ```sql
+      MariaDB [Nginx]> select distinct(substring_index(time,':',1)) as date, path, count(*) as times from ngnix_access_log group by date, path limit 10;
+      ```
+      ```sql
+      +-------------+--------------------------------------------------------------------------+-------+
+      | date        | path                                                                     | times |
+      +-------------+--------------------------------------------------------------------------+-------+
+      | 06/Mar/2021 | /check/balance/24%20hour/encompassing                                    |     3 |
+      | 06/Mar/2021 | /check/balance/24%20hour/toolset                                         |     3 |
+      | 06/Mar/2021 | /check/balance/24/7                                                      |     6 |
+      | 06/Mar/2021 | /check/balance/24/7/Persevering                                          |     3 |
+      | 06/Mar/2021 | /check/balance/24/7/portal_implementation                                |     3 |
+      | 06/Mar/2021 | /check/balance/3rd%20generation                                          |     3 |
+      | 06/Mar/2021 | /check/balance/3rd%20generation%206th%20generation/zero%20administration |     3 |
+      | 06/Mar/2021 | /check/balance/3rd%20generation_utilisation                              |     3 |
+      | 06/Mar/2021 | /check/balance/4th%20generation-Phased-Implemented                       |     3 |
+      | 06/Mar/2021 | /check/balance/5th%20generation                                          |     3 |
+      +-------------+--------------------------------------------------------------------------+-------+
+      ```
   
   - **Total requests per status code (Ex: count of requests returning 404/401/502/504/500/200)**
     ```sql
