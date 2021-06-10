@@ -224,7 +224,5 @@
       ```
 
   - Check docker **processes** to verify that container is running usinf `docker ps`, and if running successfully, verify the setup by accessing `<BridgeIP>:80` or `<BridgeIP>:443` for checking the traefik **dashboard**.
-=======
 
->>>>>>> feea5fadae5c31f4300105b8864abcb29ef2c45e
 
