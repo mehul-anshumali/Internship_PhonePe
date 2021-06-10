@@ -1,0 +1,108 @@
+# Add 2 disks each of 10GB each to this VM. Create a LVM using these two disks and create XFS filesystem on it. Mount this on /data directory and make sure that mount persists across reboots.
+- ## About LVM 
+  - LVM (Logical Volume Manager) is a device mapper framework that provides logical volume management for the kernel. It is a tool for logical volume management which includes allocating disk, stripping, mirroring, and resizing logical volumes. With this, a hard disk or a set of hard disks is allocated to on or more physical volumes.
+
+  - LVM functions by layering abstractions on top of physical storage devices. The basic layers that LVM uses, starting with the most primitive, are.
+    - Physical Volume (pv),
+    - Volume Group (vg), and
+    - Logical Volumne (lv)
+    
+- ## Adding Two Hard Disk
+  - Go to VM OS (UBUNTU) 
+    ```
+    - SETTINGS
+        - STORAGE
+            - CONTROLLER (SATA)
+              - CREATE 2 VDIs 
+              - ATTACH 
+              - SAVE.
+    ```
+    
+- ## Creating and Managing LVM
+  - Our first step for creating lvm is to scan the system for block devices that LVM can see and manage. You can do this by the folllowing command:
+    ```
+    sudo lvmdiskscan
+    ```
+
+  - After seeing the physical volume our next step is to see how many disks are available to manage and to add it to the physical volume.You can do this by the folllowing command:
+    ```
+    sudo fdisk -l
+    ```
+
+  - ### Mark the Physical Devices as Physical Volumes
+    Now that we know the disks we want to use, we can mark them as physical volumes within LVM using the ```pvcreate``` command:
+    ```
+    sudo pvcreate /dev/sdb /dev/sdc
+    ```
+
+    This will write an LVM header to the devices to indicate that they are ready to be added to a volume group.
+
+    You can verify that LVM has registered the physical volumes by typing:
+    ```
+    sudo pvs
+    ```
+    OR 
+    ```
+    sudo pvscan
+    ```
+    OR 
+    ```
+    sudo pvdisplay
+    ```
+
+
+  - ### Add the Physical Volumes to a Volume Group
+    Now that we have created physical volumes from our devices, we can create a volume group. We will have to select a name for the volume group, which we’ll keep generic. We wil call it ```newVG```.
+
+    To create the volume group and add our physical volumes to it, type the following command:
+    ```
+    sudo vgcreate newVG /dev/sdb /dev/sdc
+    ```
+    You can verify that VG has created by typing:
+    ```
+    sudo vgs
+    ```
+  - ### Creating Logical Volumes from the Volume Group
+    Now that we have a volume group available, we can use it as a pool that we can allocate logical volumes from. We wil call it ```newLV```.
+
+    To create the volume group and add our physical volumes to it, type the following command:
+    ```
+    sudo lvcreate -n newLV -L 19G newVG
+    ```
+    You can verify that LV has created by typing:
+    ```
+    sudo lvs
+    ```
+
+  - ### Format and Mount the Logical Volume
+    We are mouting this ```newLV``` logical volume by XFS file system. 
+    So, first we need to install xfs file system utilities.
+    ```
+    sudo apt-get install xfsprogs
+    ```
+    Create a directory where this xfs file system will be mounted. We are mounting it in ```/data```.
+    ```
+    mkdir /data
+    ```
+    Now, to format our logical volume with the Xfs filesystem, we can type:
+    ```
+    sudo mkfs.xfs /dev/newVG/newLV
+    ```
+    After formatting, we mount it to ```/data``` directory:
+    ```
+    sudo mount xfs /dev/newVG/newLV /data
+    ```
+    <img src="https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week1/output_images/lvm_created.png" width="600" height="500">
+
+    To make the mounts persistent, add them to ```/etc/fstab```:
+    ```
+    sudo nano /etc/fstab
+    ```
+    ```
+    /dev/newVG/newLV /data xfs defaults 0 0
+    ```
+    Save ```ctrl+s``` and exit ```ctrl+x```.
+
+    Then, type ```mount -a```.
+
+    The operating system should now mount the LVM logical volumes automatically at boot.
