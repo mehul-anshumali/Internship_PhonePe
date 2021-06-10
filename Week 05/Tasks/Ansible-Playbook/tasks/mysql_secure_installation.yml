@@ -1,0 +1,31 @@
+---
+# Mysql Secure Installation
+- name: Set "root" user password
+  mysql_user:
+    name: "root"
+    host_all: true
+    password: "{{ login_password | mandatory }}"
+    state: present
+    login_unix_socket: "{{ login_unix_socket }}"
+
+- name: Test database is absent
+  mysql_db:
+    login_user: "{{ login_user }}"
+    login_password: "{{ login_password }}"
+    name: test
+    state: absent
+    login_unix_socket: "{{ login_unix_socket }}"
+  when: mysql_remove_test_database
+
+- name: Anonymous users are absent
+  mysql_user:
+    login_user: "{{ login_user }}"
+    login_password: "{{ login_password }}"
+    name: ''
+    state: absent
+    host_all: true
+    login_unix_socket: "{{ login_unix_socket }}"
+  when: mysql_remove_anonymous_users
+
+
+

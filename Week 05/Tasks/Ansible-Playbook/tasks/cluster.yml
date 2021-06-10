@@ -1,0 +1,25 @@
+---
+# Galera Cluster configuration
+- name: Configure galera.cnf file
+  template: 
+    src: cluster.cnf.j2 
+    dest: /etc/mysql/conf.d/galera.cnf
+    owner: root 
+    group: root 
+
+- name: SERVICE | Stop MariaDB
+  service:
+    name: mariadb
+    state: stopped
+
+- name: First Node | Brodcasting
+  command: galera_new_cluster
+  when: ansible_enp0s8.ipv4.address == groups['week5'][0]
+
+- name: SERVICE | Restart MariaDB
+  service:
+    name: mariadb
+    state: restarted
+  when: ansible_enp0s8.ipv4.address != groups['week5'][0]
+    
+
