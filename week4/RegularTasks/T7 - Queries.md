@@ -2,7 +2,7 @@
 
  - **Summary for the day/week/month:**
  
-    - **highest requested host**
+    - highest requested host
     
     ```sql
     MariaDB [Nginx]> select distinct(substring_index(time,':',1)) as date, host, count(*) as times from ngnix_access_log group by date, host;
@@ -32,69 +32,12 @@
     | 12/Feb/2021 | apptwo.ppops.com     |   676 |
     | 12/Feb/2021 | prod.ppops.pm5       |   635 |
     +-------------+----------------------+-------+
+    20 rows in set (0.150 sec)
     ```
     
-    - **highest requested upstream_ip**
-      ```sql
-      MariaDB [Nginx]> select distinct(substring_index(time,':',1)) as date, upstream_ip_port, count(*) as times from ngnix_access_log group by date, host;
-      ```
-      ```sql
-      +-------------+------------------+-------+
-      | date        | upstream_ip_port | times |
-      +-------------+------------------+-------+
-      | 06/Mar/2021 | 10.77.23.11:80   |  3174 |
-      | 06/Mar/2021 | 10.77.22.14:443  |  3288 |
-      | 06/Mar/2021 | 10.77.23.10:80   |  3075 |
-      | 06/Mar/2021 | 10.77.23.11:80   |  3126 |
-      | 06/Mar/2021 | 10.77.22.11:80   |  3300 |
-      | 07/Mar/2021 | 10.77.23.11:80   |  5790 |
-      | 07/Mar/2021 | 10.77.22.14:443  |  5883 |
-      | 07/Mar/2021 | 10.77.22.14:8443 |  5623 |
-      | 07/Mar/2021 | 10.77.23.11:80   |  5725 |
-      | 07/Mar/2021 | 10.77.22.11:80   |  5900 |
-      | 08/Mar/2021 | 10.77.27.13:443  |  1216 |
-      | 08/Mar/2021 | 10.77.23.12:80   |  1238 |
-      | 08/Mar/2021 | 10.77.22.14:8443 |  1258 |
-      | 08/Mar/2021 | 10.77.22.11:443  |  1186 |
-      | 08/Mar/2021 | 10.77.22.13:443  |  1256 |
-      | 12/Feb/2021 | 10.77.22.11:80   |   635 |
-      | 12/Feb/2021 | 10.77.22.12:80   |   653 |
-      | 12/Feb/2021 | 10.77.27.14:80   |   635 |
-      | 12/Feb/2021 | 10.77.23.10:443  |   676 |
-      | 12/Feb/2021 | 10.77.22.15:80   |   635 |
-      +-------------+------------------+-------+
-      ```
-    - **highest requested path (upto 2 subdirectories ex: /check/balance)**
-      ```sql
-      MariaDB [Nginx]> select distinct(substring_index(time,':',1)) as date, path, count(*) as times from ngnix_access_log group by date, host;
-      ```
-      ```sql
-      +-------------+------------------------------------------------------------+-------+
-      | date        | path                                                       | times |
-      +-------------+------------------------------------------------------------+-------+
-      | 06/Mar/2021 | /myapi/consumers/definition/Operative/solution-oriented    |  3174 |
-      | 06/Mar/2021 | /recharge/phone/parallelism%20Optimized/homogeneous        |  3288 |
-      | 06/Mar/2021 | /myapi/kyc/migration%20orchestration                       |  3075 |
-      | 06/Mar/2021 | /recharge/phone/Reactive-functionalities/optimal           |  3126 |
-      | 06/Mar/2021 | /check/balance/Re-engineered/Graphic%20Interface           |  3300 |
-      | 07/Mar/2021 | /myapi/consumers/definition/Operative/solution-oriented    |  5790 |
-      | 07/Mar/2021 | /recharge/phone/parallelism%20Optimized/homogeneous        |  5883 |
-      | 07/Mar/2021 | /myapi/consumers/encoding/Reverse-engineered/logistical    |  5623 |
-      | 07/Mar/2021 | /recharge/phone/Reactive-functionalities/optimal           |  5725 |
-      | 07/Mar/2021 | /check/balance/Re-engineered/Graphic%20Interface           |  5900 |
-      | 08/Mar/2021 | /recharge/dth/open%20system/fresh-thinking-Enterprise-wide |  1216 |
-      | 08/Mar/2021 | /myapi/kyc/Multi-tiered-User-friendly                      |  1238 |
-      | 08/Mar/2021 | /myapi/consumers/encoding/Reverse-engineered/logistical    |  1258 |
-      | 08/Mar/2021 | /myapi/consumers/Persevering                               |  1186 |
-      | 08/Mar/2021 | /recharge/dth/Horizontal/reciprocal                        |  1256 |
-      | 12/Feb/2021 | /check/balance/open%20architecture                         |   635 |
-      | 12/Feb/2021 | /check/balance/Monitored                                   |   653 |
-      | 12/Feb/2021 | /recharge/phone/middleware/neutral                         |   635 |
-      | 12/Feb/2021 | /myapi/kyc/zero%20tolerance                                |   676 |
-      | 12/Feb/2021 | /myapi/consumers/portal                                    |   635 |
-      +-------------+------------------------------------------------------------+-------+
-      20 rows in set (0.172 sec)
-      ```
+    - highest requested upstream_ip
+    
+    - highest requested path (upto 2 subdirectories ex: /check/balance)
   
   - **Total requests per status code (Ex: count of requests returning 404/401/502/504/500/200)**
     ```sql
@@ -235,7 +178,7 @@
       +----------------------+------------+-------+
       5 rows in set (0.114 sec)
       ```
-  - **Find the time last 200/5xx/4xx was received for a particular host.**
+  - **Find the time last 200/5xx/4xx was received for a particular host**
   
   - **Get all request for the last 10 minutes**
   
