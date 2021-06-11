@@ -1,6 +1,6 @@
 ---
 - name: Status of data replication
-  command: mysql --user=root --password=root -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
+  command: mysql --user=root -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
   register: status
   when: ansible_enp0s8.ipv4.address != groups['slave_node'][0]
 
