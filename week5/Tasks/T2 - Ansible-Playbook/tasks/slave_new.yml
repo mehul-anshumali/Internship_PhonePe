@@ -29,7 +29,6 @@
 
 - name: Flush Privileges
   command: mysql --user=root -e "FLUSH PRIVILEGES"
-  changed_when: False
   when: ansible_enp0s8.ipv4.address == groups['master_node'][0]
 
 - name: Stop slave
