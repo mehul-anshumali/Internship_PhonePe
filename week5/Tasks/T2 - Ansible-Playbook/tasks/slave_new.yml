@@ -66,25 +66,26 @@
     state: restarted
   when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
 
-- name: Stop slave
-  mysql_replication:
-    login_user: "{{ login_user }}"
-    mode: stopslave
-    login_unix_socket: "{{ login_unix_socket }}"
-  when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
+# If duplicate entry
+# - name: Stop slave
+#   mysql_replication:
+#     login_user: "{{ login_user }}"
+#     mode: stopslave
+#     login_unix_socket: "{{ login_unix_socket }}"
+#   when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
 
-- name: Drop user slave
-  mysql_user:
-    login_user: "{{ login_user }}"
-    name: slave
-    host: "192.168.1.3"
-    state: absent
-    login_unix_socket: "{{ login_unix_socket }}"
-  when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
+# - name: Drop user slave
+#   mysql_user:
+#     login_user: "{{ login_user }}"
+#     name: slave
+#     host: "192.168.1.3"
+#     state: absent
+#     login_unix_socket: "{{ login_unix_socket }}"
+#   when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
 
-- name: Start slave
-  mysql_replication:
-    login_user: "{{ login_user }}"
-    mode: startslave
-    login_unix_socket: "{{ login_unix_socket }}"
-  when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
+# - name: Start slave
+#   mysql_replication:
+#     login_user: "{{ login_user }}"
+#     mode: startslave
+#     login_unix_socket: "{{ login_unix_socket }}"
+#   when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
