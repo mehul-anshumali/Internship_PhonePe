@@ -38,13 +38,6 @@
     login_unix_socket: "{{ login_unix_socket }}"
   when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
 
-- name: Reset slave
-  mysql_replication:
-    login_user: "{{ login_user }}"
-    mode: resetslave
-    login_unix_socket: "{{ login_unix_socket }}"
-  when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
-
 - name: Set Slave pos
   command: mysql --user=root -e "SET GLOBAL gtid_slave_pos = '{{ hostvars['192.168.1.1']['gtid'] }}'"
   when: ansible_enp0s8.ipv4.address == groups['slave_node'][0]
