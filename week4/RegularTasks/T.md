@@ -32,17 +32,7 @@ In this task, we have 2 parts:
     * In `node3` :
         ```bash
         $ rsync -av /home/mehul/pbackup/ mehul@192.168.1.4:/home/mehul/backup/
-        ```
-* In joiner node, we may have to remove any kind of existing file in our `datadir` i.e `/var/lib/mysql/`
-    ```bash
-    $ sudo rm -Rf /var/lib/mysql/*
-    ```
-* In joiner node - `docker-node`, before restoring the backup, we need to prepare it
-    ```bash
-    $ sudo mariabackup --prepare \
-        --target-dir=/home/mehul/backup \
-        --user mariabackup --password mypassword
-    ```
+      ```
 * We now have the work with `docker`, so install it and pull `mariadb v10.5.6` to create a container with the name `maria-dock-node`,
     ```bash
     $ sudo apt-get update
@@ -54,6 +44,7 @@ In this task, we have 2 parts:
     $ docker run --name maria-dock-node -d -e MYSQL_ROOT_PASSWORD=root mariadb:10.5.6
     $ docker ps -a                     
     ```
+
 
 * Now we can login to the `mysql` shell in the docker container or open up a bash terminal, so for `mysql` shell,
     ```bash
@@ -71,7 +62,16 @@ In this task, we have 2 parts:
     $ docker exec -it maria-dock-node bash     
     $ ls /home/backup                           #list the files and compare with the host backup files to verify the copy operation
     ```
-
+* In joiner node, we may have to remove any kind of existing file in our `datadir` i.e `/var/lib/mysql/`
+    ```bash
+    $ sudo rm -Rf /var/lib/mysql/*
+    ```
+* In joiner node - `docker-node`, before restoring the backup, we need to prepare it
+    ```bash
+    $ sudo mariabackup --prepare \
+        --target-dir=/home/mehul/backup \
+        --user mariabackup --password mypassword
+    ```
 * Now, we require to restore the backup so, in `maria-dock-node` we can use either `cp` command to just copy all files into `/var/lib/mysql` directory or use `mariabackup` with the option `--copy-back` / `--move-back`,
     ```bash
     $ mariabackup --copy-back --target-dir=/home/backup/
