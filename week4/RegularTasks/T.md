@@ -12,19 +12,18 @@ In this task, we have 2 parts:
     * Donor Node : `node3` | 192.168.1.3
     * Joiner Node : standalone node - `docker-node` | 192.168.1.4
 
-* Stop the `mariadb` server and check the status
-    ```bash
-    $ sudo systemctl stop mariadb
-    $ sudo systemctl status mariadb
-    ```
-    
 * Now, for storing the physical backup in `node3` and initiating the backup using `mariabackup`, we do
     ```bash
     $ sudo mkdir /home/mehul/pbackup
     $ sudo mariabackup --backup --galera-info --target-dir=/home/mehul/pbackup \
         --user mariabackup --password mypassword
     ```
-
+* Stop the `mariadb` server and check the status
+    ```bash
+    $ sudo systemctl stop mariadb
+    $ sudo systemctl status mariadb
+    ```
+    
 * Now in Joiner node - `docker-node`, we create the directory and copy the backup from `node3` (donor) to `docker-node` (joiner) using rsync or scp
     * In `docker-node` :
         ```bash
