@@ -12,7 +12,7 @@
 - Make partitions:
   ```sql
   Alter table ngnix_access_log PARTITION BY RANGE ('partition_id')
-  (PARTITION 'p0' VALUES LESS THAN (1) ENGINE = InnoDB,
+  (PARTITION 'week0' VALUES LESS THAN (1) ENGINE = InnoDB,
   PARTITION 'week1' VALUES LESS THAN (2) ENGINE = InnoDB,
   PARTITION 'week2' VALUES LESS THAN (3) ENGINE = InnoDB,
   PARTITION 'week3' VALUES LESS THAN (4) ENGINE = InnoDB,
