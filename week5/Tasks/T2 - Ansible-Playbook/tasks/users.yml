@@ -2,7 +2,6 @@
 - name: Create my user with all privileges
   mysql_user:
     login_user: "{{ login_user }}"
-    login_password: "{{ login_password }}"
     name: newuser
     host: '%'
     password: mehul
@@ -14,7 +13,6 @@
 - name: Create monitoring user with only read privileges
   mysql_user:
     login_user: "{{ login_user }}"
-    login_password: "{{ login_password }}"
     name: monitoring
     host: '%'
     password: mehul
