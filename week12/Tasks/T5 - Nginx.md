@@ -57,7 +57,7 @@
     ```
     sudo systemctl restart nginx
     ```
-    Nginx IP :- `192.168.84.150
+    Nginx IP :- `192.168.84.150`
     <img width="1792" alt="Screenshot 2021-06-26 at 1 55 07 PM" src="https://user-images.githubusercontent.com/44754882/123507279-2b93cb80-d686-11eb-8ffd-bbb83120c7cb.png">
 
 
