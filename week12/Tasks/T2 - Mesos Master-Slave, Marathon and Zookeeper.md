@@ -159,7 +159,7 @@
       ```
       - Add `slave-ip`.
       ```
-      sudo cp /etc/mesos-master/ip /etc/mesos-slave/hostname
+      sudo cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
       ```
     - Make sure the `mesos-master` doesn't start on boot:
       ```
