@@ -56,7 +56,6 @@
       ```
       sudo apt-get install marathon
       ```
-<<<<<<< HEAD
   - ### Install Zookeeper:
     ```
     sudo apt-get install zookeeper
@@ -67,7 +66,7 @@
       sudo nano /etc/mesos/zk
       ```
       ```
-      zk://192.168.67.48:2181/mesos
+      zk://10.10.1.11:2181/mesos
       ```
     - Enter an unique id `1-255` for each `mesos-master`, in our case - `1` in myid file:
       ```
@@ -81,7 +80,7 @@
       sudo nano /etc/zookeeper/conf/zoo.cfg
       ```
       ```
-      server.1=192.168.67.48:2888:3888
+      server.1=10.10.1.11:2888:3888
       ```
     - Open the quorum configuration file and `1` to it:
       ```
@@ -103,9 +102,9 @@
       sudo nano /etc/default/marathon 
       ```
       ```
-      MARATHON_MASTER="zk://192.168.67.48:2181/mesos"
-      MARATHON_ZK="zk://192.168.67.48:2181/marathon"
-      MARATHON_HOSTNAME="192.168.67.48"
+      MARATHON_MASTER="zk://10.10.1.11:2181/mesos"
+      MARATHON_ZK="zk://10.10.1.11:2181/marathon"
+      MARATHON_HOSTNAME="10.10.1.11"
       ```
     - Make sure the `mesos-slave` doesn't start on boot:
       ```
@@ -128,9 +127,9 @@
       ```
       sudo service marathon restart
       ```
-  - #### Verify the setup by accessing both `mesos-master's` & `marathon's` dashboard.
-    - `mesos-master`: 192.168.67.48:5050
-    - `marathon`: 192.168.67.48:8080
+  - #### Verify the setup by accessing both `mesos-master's` & `marathon's` dashboard. Before that Setup the Proxy using `FoxyProxy`.
+    - `mesos-master`: 10.10.1.11:5050
+    - `marathon`: 10.10.1.11:8080
 - ## Mesos slave and Docker on VM2:
   - ### Install Mesos: 
     - Install dependencies: 
@@ -152,7 +151,7 @@
       sudo nano /etc/mesos/zk
       ```
       ```
-      zk://192.168.67.48:2181/mesos
+      zk://10.10.1.11:2181/mesos
       ```
     - Configure the Hostname and IP Address: #enter slave ip.
       ```
@@ -192,35 +191,14 @@
       $ sudo docker run hello-world
       ```
   - ### Configuration:
-    - #### Install apache-utils for using using _letsencrypt_ for basic authentication before accessing **traefik dashboard**, use _htpasswd_ utility to generate authentication details.
-      ```bash
-      $ sudo apt-get install -y apache2-utils
-      $ htpasswd -nb <username> <password>
-      # copy the encrypted username:password
-      ```
     - Add the `toml` configuration for **traefik** to make it available through ports `80` & `433`, and configure `marathon` as **provider** - [traefik.toml](https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week12/Tasks/Traefik/traefik.toml).
-    - Use the _encrypted authentication details_ generated before and create [traefik_secure.toml](https://github.com/mehul-anshumali/Internship_PhonePe/blob/main/week12/Tasks/Traefik/traefik_secure.toml) file.
     - Create a network interface for docker named **web** to be used by traefik container,
       ```
       sudo docker network create web
       ```
-    - Create a file named `acme.json`, and assign `600` permissions, once this json file moves to docker container the ownership will get changed to **root** automatically.
-      ```
-      touch acme.json
-      chmod 600 acme.json
-      ```
     - Create a `traefik` container using all these configurations,
       ```
-      sudo docker run -d \
-       -v /var/run/docker.sock:/var/run/docker.sock \
-       -v $PWD/traefik.toml:/traefik.toml \
-       -v $PWD/traefik_secure.toml:/traefik_secure.toml \
-       -v $PWD/acme.json:/acme.json \
-       -p 80:80 \
-       -p 443:443 \
-       --network web \
-       --name traefik \
-        traefik:v2.4
+      sudo docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v $PWD/traefik.toml:/etc/traefik/traefik.toml -p 8080:8080  -p 80:80  --name traefik        traefik:v2.4
       ```
 
   - Check docker **processes** to verify that container is running usinf `docker ps`, and if running successfully, verify the setup by accessing `<BridgeIP>:80` or `<BridgeIP>:443` for checking the traefik **dashboard**.
